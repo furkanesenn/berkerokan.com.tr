@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>My All Articles</h1>
+
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr)">
+      {% for article in articles %}
+      <div>
+        <img src="{{article.cover.url}}" width="200" height="133" />
+        <p>{{article.title}}</p>
+        <p>{{article.short_description}}</p>
+        <p>{{article.author}}</p>
+        <p>{{article.created_at}}</p>
+        <p>{{article.like_count}}</p>
+
+        <a href="#">Read more...</a>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
