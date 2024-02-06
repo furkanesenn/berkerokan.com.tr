@@ -41,6 +41,11 @@ class Article(models.Model):
         self.like_count += 1
         self.save()
         return True 
+    
+    def dislike(self):
+        self.like_count -= 1
+        self.save()
+        return True
 
     def view(self):
         self.view_count += 1

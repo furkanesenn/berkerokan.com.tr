@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, HttpResponse
 
 from . import models
-from core.utils import search_engine
+from core.utils import search_engine, interactions
 
 """
 TODOS:
@@ -9,10 +9,10 @@ TODOS:
 - Utilize article/book view
 - Add view and other stats to the models. 
 - Add article stats view.
-- Cooldown decorator for like and view.
-- Dislike article view.
 
 """
+
+
 
 # All articles view 
 
@@ -51,17 +51,23 @@ def article_search(request):
 
 # Like article view 
 
+@interactions.cooldown
 def article_like(request, article_id: int):
+    request.session.setdefault('liked_articles', {})
+    request.session.set_expiry(0)
+    liked_articles: dict = request.session.get('liked_articles', {})
     article = models.Article.objects.get(id=article_id)
+    article_id = str(article_id)
 
-    if article_id in request.session.get('liked_articles', []):
-      
-       return render(request, 'article_detail.html', {'article': article, 'error': 'Article already liked'}, status=400)
+    if article_id in liked_articles.keys():
+        del liked_articles[article_id] 
+        article.dislike()
+        return redirect('article-detail', article_id=article_id)
     
     if article.like() == True:
-        request.session['liked_articles'] = request.session.get('liked_articles', []) + [article_id]
-        return render(request, 'article_detail.html', {'article': article, 'message': 'Article liked successfully'}, status=200)
+        liked_articles[article_id] = article.title
+        return redirect('article-detail', article_id=article_id)
     
-    return render(request, 'article_detail.html', {'article': article, 'error': 'Article like failed'}, status=400)
+    return redirect('article-detail', article_id=article_id)
 
 # Article stats view
