@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>{{ article.title }}</h1>
+    <img src="{{article.cover.url}}" />
+    <p>{{ article.body }}</p>
+    <a href="{% url 'article-like' article.id %}"
+      >Beğen. (Toplam {{article.like_count}} Beğeni Almış)</a
+    >
+  </body>
+</html>

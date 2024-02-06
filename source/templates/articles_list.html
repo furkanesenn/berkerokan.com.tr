@@ -8,6 +8,47 @@
   <body>
     <h1>My All Articles</h1>
 
+    <form method="get" action="{% url 'article-search' %}">
+      <label for="search-query"></label>
+      <input
+        name="search-query"
+        id="search-query"
+        placeholder="Enter your query..."
+        value="{{search_query}}"
+      />
+
+      <select id="genre" name="genre">
+        {% for genre in genres %} {% if genre == fgenre %}
+        <option value="{{genre}}" selected="selected">{{genre}}</option>
+        {% else %}
+        <option value="{{genre}}">{{genre}}</option>
+        {% endif %} {% endfor %}
+      </select>
+
+      <select id="year" name="year">
+        {% for year in years %} {% if year == fyear %}
+        <option value="{{year}}" selected="selected">{{year}}</option>
+        {% else %}
+        <option value="{{year}}">{{year}}</option>
+        {% endif %} {% endfor %}
+      </select>
+
+      <select id="sort" name="sort">
+        {% if sorting == "a-z" %}
+        <option value="a-z" selected="selected">A-Z</option>
+        <option value="date">Tarih</option>
+        {% elif sorting == "date" %}
+        <option value="a-z">A-Z</option>
+        <option value="date" selected="selected">Tarih</option>
+        {% else %}
+        <option value="a-z" selected="selected">A-Z</option>
+        <option value="date">Tarih</option>
+        {% endif %}
+      </select>
+
+      <input type="submit" value="Submit" />
+    </form>
+
     <div style="display: grid; grid-template-columns: repeat(4, 1fr)">
       {% for article in articles %}
       <div>
@@ -18,7 +59,7 @@
         <p>{{article.created_at}}</p>
         <p>{{article.like_count}}</p>
 
-        <a href="#">Read more...</a>
+        <a href="{% url 'article-detail' article.id %}">Read more...</a>
       </div>
       {% endfor %}
     </div>
