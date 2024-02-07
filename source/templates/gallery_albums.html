@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>My all gallery albums</h1>
+
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr)">
+      {% for album in albums %}
+      <div>
+        <img src="{{album.cover.url}}" width="400" height="400" />
+        <p>{{ album.title }}</p>
+        <p>{{ album.description }}</p>
+        <p>{{ album.photos.all|length }}</p>
+        <a href="{% url 'gallery-album' album.id %}">Albümü görüntüle...</a>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>

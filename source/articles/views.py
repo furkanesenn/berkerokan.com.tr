@@ -8,7 +8,9 @@ TODOS:
 
 - Utilize article/book view
 - Add view and other stats to the models. 
-- Add article stats view.
+- Add article stats view. 
+- Make the URLs Turkish. 
+- Embed a rich text editor for the django admin.
 
 """
 

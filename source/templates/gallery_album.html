@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>{{ album.title }}</h1>
+    <p>{{ album.description }}</p>
+    <p>Album Impression: {{ album.impression_count }}</p>
+
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr)">
+      {% for photo in album.photos.all %}
+      <a href="{% url 'gallery-impression' photo.id %}">
+        <img src="{{ photo.image.url }}" width="300" height="300" />
+        <p>View: {{ photo.view_count }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </body>
+</html>
