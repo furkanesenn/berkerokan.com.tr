@@ -3,6 +3,14 @@ from django.shortcuts import render
 from . import models
 from core.utils import search_engine
 
+"""
+TODOS:
+
+- Engagement and view count should be updated when a user interacts with the book object.
+- Comment and rating system should be implemented for books.
+- Highlight new books in the books list view. Also send an email to the subscribers when a new book is added.
+"""
+
 # All books view 
 
 def books_list(request):

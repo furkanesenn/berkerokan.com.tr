@@ -8,6 +8,7 @@ urlpatterns = [
     path('books/', include('books.urls')),
     path('articles/', include('articles.urls')),
     path('gallery/', include('gallery.urls')),
+    path('newsletter/', include('newsletter.urls')),
     path('', include('core.urls')),
 ]
 

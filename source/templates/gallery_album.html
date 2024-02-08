@@ -12,7 +12,7 @@
 
     <div style="display: grid; grid-template-columns: repeat(4, 1fr)">
       {% for photo in album.photos.all %}
-      <a href="{% url 'gallery-impression' photo.id %}">
+      <a href="{% url 'gallery-engagement' photo.id %}">
         <img src="{{ photo.image.url }}" width="300" height="300" />
         <p>View: {{ photo.view_count }}</p>
       </a>

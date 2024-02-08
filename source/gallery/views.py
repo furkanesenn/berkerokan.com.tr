@@ -7,6 +7,7 @@ TODOS:
 
 - Make the URLS Turkish
 - Create stats page for albums and photos
+- Import and export to the admin panel
 
 """
 
@@ -31,15 +32,15 @@ def gallery_album(request, album_id: int):
     album.view()
     return render(request, 'gallery_album.html', {"album": album}, status=200)
 
-# Photo impression view
+# Photo engagement view
 
-def gallery_impression(request, photo_id: int):
+def gallery_engagement(request, photo_id: int):
     photo = models.Photo.objects.get(id=photo_id)
 
     if photo is None:
         return redirect('gallery-album', album_id=photo.album.id)
     
-    photo.album.impression()
+    photo.album.engagement()
     photo.view()
 
     return redirect('gallery-album', album_id=photo.album.id)
