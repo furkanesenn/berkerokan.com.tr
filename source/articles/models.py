@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 ARTICLE_TYPES = (
     ('Dizi Hikayeler', 'Dizi Hikayeler'),
@@ -11,7 +12,8 @@ ARTICLE_TYPES = (
 class Article(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200, unique=True, blank=False, null=False, verbose_name='Başlık')
-    body = models.TextField(blank=False, null=False, verbose_name='İçerik')
+    # body = models.TextField(blank=False, null=False, verbose_name='İçerik')
+    body = RichTextField(blank=False, null=False, verbose_name='İçerik')
     short_description = models.TextField(blank=False, null=False, verbose_name='Kısa Açıklama')
     genre = models.CharField(max_length=200, choices=ARTICLE_TYPES, default='Dizi Hikayeler', blank=False, null=False, verbose_name='Tür')
     keywords = models.CharField(max_length=200, blank=False, null=False, verbose_name='Anahtar Kelimeler')

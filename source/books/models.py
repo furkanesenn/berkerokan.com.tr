@@ -1,10 +1,12 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 class Book(models.Model):
   id = models.AutoField(primary_key=True,)
   title = models.CharField(max_length=200, unique=True, blank=False, null=False, verbose_name='Ad')
   author = models.CharField(max_length=200, blank=False, null=False, verbose_name='Yazar')
-  description = models.TextField(blank=True, null=True, verbose_name='Açıklama')
+  # description = models.TextField(blank=True, null=True, verbose_name='Açıklama')
+  description = RichTextField(blank=True, null=True, verbose_name='Açıklama')
   cover = models.ImageField(upload_to='covers/', blank=False, null=False, verbose_name='Kapak Fotoğrafı')
   genre = models.CharField(max_length=200, blank=True, null=True, verbose_name='Tür')
   date = models.DateField(blank=True, null=True, verbose_name='Yayın Tarihi')
