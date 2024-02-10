@@ -9,8 +9,110 @@
     <h1>{{ article.title }}</h1>
     <img src="{{article.cover.url}}" />
     <p>{{ article.body }}</p>
-    <a href="{% url 'article-like' article.id %}"
+    <a href="{% url 'articles:article-like' article.id %}"
       >Beğen. (Toplam {{article.like_count}} Beğeni Almış)</a
     >
+    <br /><br /><br />
+
+    <ul>
+      {% for comment in article.comments.all %}
+      <li>
+        <p>{{ comment.author }}</p>
+        <p class="comment-body" id="{{comment.id}}" contenteditable="true">
+          {{ comment.body }}
+        </p>
+        <a href="{% url 'comment-delete' comment.id %}">Delete comment</a>
+        <a href="{% url 'comment-like' comment.id %}"
+          >Like comment ({{comment.like_count}})</a
+        >
+        <a href="{% url 'comment-report' comment.id %}">Report comment</a>
+        <form action="{% url 'comment-edit' comment.id %}" method="get">
+          <input type="hidden" name="body" id="body" value="test" />
+          <input type="submit" value="Edit comment" />
+        </form>
+
+        <ul>
+          {% for scomment in comment.subcomments.all reversed %}
+          <li>
+            <p>{{ scomment.author }}</p>
+            <p>{{ scomment.body }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+
+        <form action="{% url 'comment-reply' comment.id %}" method="post">
+          {% csrf_token %}
+
+          <input
+            type="text"
+            name="first-name"
+            id="first-name"
+            placeholder="isim"
+          />
+          <input
+            type="text"
+            name="last-name"
+            id="last-name"
+            placeholder="soyisim"
+          />
+          <input type="email" name="email" id="email" placeholder="eposta" />
+          <textarea
+            name="body"
+            id="body"
+            cols="30"
+            rows="5"
+            placeholder="body"
+          ></textarea>
+
+          <label for="notify-me"
+            >Send me a notification email when my comment is answered</label
+          >
+          <input type="checkbox" name="notify-me" id="notify-me" checked />
+
+          <input type="submit" value="Reply to the comment" />
+        </form>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <br /><br />
+
+    <form method="post" action="{% url 'comment-send' article.id %}">
+      {% csrf_token %}
+
+      <input type="text" name="first-name" id="first-name" placeholder="isim" />
+      <input
+        type="text"
+        name="last-name"
+        id="last-name"
+        placeholder="soyisim"
+      />
+      <input type="email" name="email" id="email" placeholder="eposta" />
+      <textarea
+        name="body"
+        id="body"
+        cols="30"
+        rows="5"
+        placeholder="body"
+      ></textarea>
+      <input
+        type="text"
+        name="content-type"
+        id="content-type"
+        placeholder="content-type"
+        value="article"
+        required
+        readonly
+      />
+
+      <label for="notify-me"
+        >Send me a notification email when my comment is answered</label
+      >
+      <input type="checkbox" name="notify-me" id="notify-me" checked />
+
+      <input type="submit" value="Send comment" />
+    </form>
+
+    <a href="#">Article Stats</a>
   </body>
 </html>

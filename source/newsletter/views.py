@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 
 from . import models
+
 from newsletter.utils import email, validation
+from core.utils import session_manager
 
 """
 TODOS:
@@ -43,8 +45,9 @@ def subscribe(request):
         last_name=last_name,
         newsletter=newsletter
     )
-
-    request.session['subscription_token'] = subscriber.subscription_token
+    
+    session = session_manager.SessionManager(request)
+    session.set('subscription_token', subscriber.subscription_token)
 
     newsletter.subscriber_count += 1
     newsletter.save()

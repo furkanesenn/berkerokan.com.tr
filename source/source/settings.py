@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     # Local apps
 
     'core',
+    'comments',
     'articles',
     'books',
     'gallery',
@@ -138,3 +139,10 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'furkanesen1900@gmail.com'
 EMAIL_HOST_PASSWORD = 'gqgzosuvpgwdybfa'
 
+# CK Editor settings
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+    },
+}

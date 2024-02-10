@@ -1,14 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from . import models
-from core.utils import search_engine
+from core.utils import search_engine, session_manager
 
 """
 TODOS:
 
-- Engagement and view count should be updated when a user interacts with the book object.
-- Comment and rating system should be implemented for books.
-- Highlight new books in the books list view. Also send an email to the subscribers when a new book is added.
+- Engagement and view count should be updated when a user interacts with the book object. - Done
+- Comment and rating system should be implemented for books. - Done
+- Highlight new books in the books list view. Also send an email to the subscribers when a new book is added. - Done
 """
 
 # All books view 
@@ -37,4 +37,33 @@ def book_search(request):
 # Book detail view 
     
 def book_detail(request, id):
-    return render(request, 'book_detail.html', {"book": models.Book.objects.get(id=id)}, status=200) 
+    book = models.Book.objects.get(id=id)
+    book.view()
+    return render(request, 'book_detail.html', {"book": book}, status=200) 
+
+# Rate book view
+
+def book_rate(request, id):
+    if request.method != 'POST':
+        return redirect('books:book-detail', id=id)
+    
+    book = models.Book.objects.get(id=id)
+    
+    if book is None:
+        return redirect('books:book-detail', id=id)
+
+    rating = int(request.POST.get('rating'))
+
+    if rating < 1 or rating > 5:
+        return redirect('books:book-detail', id=id)
+
+    session = session_manager.SessionManager(request)
+
+    old_rating = session.get(f'book_{id}_rating') or 0
+    session.set(f'book_{id}_rating', rating)
+
+    book.rate(rating, old_rating)
+    book.engage()
+
+    return redirect('books:book-detail', id=id)
+

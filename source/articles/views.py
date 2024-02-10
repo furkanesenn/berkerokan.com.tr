@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse
 
 from . import models
-from core.utils import search_engine, interactions
+from core.utils import search_engine, interactions, session_manager
 
 """
 TODOS:
@@ -10,11 +10,9 @@ TODOS:
 - Add view and other stats to the models. 
 - Add article stats view. 
 - Make the URLs Turkish. 
-- Embed a rich text editor for the django admin.
+- Embed a rich text editor for the django admin. - Done
 
 """
-
-
 
 # All articles view 
 
@@ -53,23 +51,20 @@ def article_search(request):
 
 # Like article view 
 
-@interactions.cooldown
+@interactions.cooldown(5)
 def article_like(request, article_id: int):
-    request.session.setdefault('liked_articles', {})
-    request.session.set_expiry(0)
-    liked_articles: dict = request.session.get('liked_articles', {})
+    session = session_manager.SessionManager(request)
     article = models.Article.objects.get(id=article_id)
     article_id = str(article_id)
 
-    if article_id in liked_articles.keys():
-        del liked_articles[article_id] 
+    if session.has_sub_key('liked_articles', article_id):
+        session.delete('liked_articles', article_id)
         article.dislike()
-        return redirect('article-detail', article_id=article_id)
+        return redirect('articles:article-detail', article_id=article_id)
     
     if article.like() == True:
-        liked_articles[article_id] = article.title
-        return redirect('article-detail', article_id=article_id)
+        session.set_map_value('liked_articles', article_id, article.title)
     
-    return redirect('article-detail', article_id=article_id)
+    return redirect('articles:article-detail', article_id=article_id)
 
 # Article stats view

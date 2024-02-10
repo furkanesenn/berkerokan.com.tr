@@ -9,5 +9,71 @@
     <h1>{{ book.title }}</h1>
     <img src="{{book.cover.url}}" width="400" height="600" />
     <p>{{ book.description }}</p>
+
+    <br /><br />
+
+    <form method="POST" action="{% url 'books:book-rate' book.id %}">
+      {% csrf_token %}
+
+      <input
+        placeholder="Your rating (0-5 scale)"
+        name="rating"
+        id="rating"
+        type="number"
+        max="5"
+        min="0"
+      />
+
+      <input type="submit" value="Rate" />
+    </form>
+
+    <br /><br /><br />
+
+    <ul>
+      {% for comment in book.comments.all %}
+      <li>
+        <p>{{ comment.author }}</p>
+        <p>{{ comment.body }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <br /><br />
+
+    <form method="post" action="{% url 'comment-send' book.id %}">
+      {% csrf_token %}
+
+      <input type="text" name="first-name" id="first-name" placeholder="isim" />
+      <input
+        type="text"
+        name="last-name"
+        id="last-name"
+        placeholder="soyisim"
+      />
+      <input type="email" name="email" id="email" placeholder="eposta" />
+      <textarea
+        name="body"
+        id="body"
+        cols="30"
+        rows="5"
+        placeholder="body"
+      ></textarea>
+      <input
+        type="text"
+        name="content-type"
+        id="content-type"
+        placeholder="content-type"
+        value="book"
+        required
+        readonly
+      />
+
+      <label for="notify-me"
+        >Send me a notification email when my comment is answered</label
+      >
+      <input type="checkbox" name="notify-me" id="notify-me" checked />
+
+      <input type="submit" value="Send comment" />
+    </form>
   </body>
 </html>

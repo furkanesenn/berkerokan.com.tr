@@ -8,7 +8,7 @@
   <body>
     <h1>My All Articles</h1>
 
-    <form method="get" action="{% url 'article-search' %}">
+    <form method="get" action="{% url 'articles:article-search' %}">
       <label for="search-query"></label>
       <input
         name="search-query"
@@ -59,7 +59,9 @@
         <p>{{article.created_at}}</p>
         <p>{{article.like_count}}</p>
 
-        <a href="{% url 'article-detail' article.id %}">Read more...</a>
+        <a href="{% url 'articles:article-detail' article.id %}"
+          >Read more...</a
+        >
       </div>
       {% endfor %}
     </div>

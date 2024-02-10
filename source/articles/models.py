@@ -1,5 +1,9 @@
 from django.db import models
+from django.contrib.contenttypes.fields import GenericRelation
+
 from ckeditor.fields import RichTextField
+
+from comments.models import Comment
 
 ARTICLE_TYPES = (
     ('Dizi Hikayeler', 'Dizi Hikayeler'),
@@ -18,7 +22,7 @@ class Article(models.Model):
     genre = models.CharField(max_length=200, choices=ARTICLE_TYPES, default='Dizi Hikayeler', blank=False, null=False, verbose_name='Tür')
     keywords = models.CharField(max_length=200, blank=False, null=False, verbose_name='Anahtar Kelimeler')
 
-    author = models.CharField(max_length=200, blank=False, null=False, verbose_name='Yazar')
+    author = models.CharField(max_length=200, blank=False, null=False, default="Berker Okan", verbose_name='Yazar')
     
     cover = models.ImageField(upload_to='article_images/', blank=False, null=False, verbose_name="Kapak Fotoğrafı") # upload_to specifies the directory to which the file is uploaded
 
@@ -30,11 +34,22 @@ class Article(models.Model):
     like_count = models.IntegerField(default=0, editable=False, verbose_name="Beğeni Sayısı") # editable=False means that the field is not editable in the admin interface
     view_count = models.IntegerField(default=0, editable=False, verbose_name="Görüntülenme Sayısı") # editable=False means that the field is not editable in the admin interface
 
+    comments = GenericRelation(Comment, related_query_name='article')
+
     def __str__(self):
         return self.title
     
     def __repr__(self):
         return f'<Article {self.title}>'
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            if self.genre == '':
+                self.genre = 'Diğer'
+            if self.short_description == '':
+                self.short_description = self.body[:100] + '...'
+
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return f'/articles/{self.id}/'

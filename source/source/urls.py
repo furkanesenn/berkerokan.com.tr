@@ -5,10 +5,11 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('books/', include('books.urls')),
-    path('articles/', include('articles.urls')),
-    path('gallery/', include('gallery.urls')),
-    path('newsletter/', include('newsletter.urls')),
+    path('books/', include('books.urls'), name='books'),
+    path('articles/', include('articles.urls'), name='articles'),
+    path('gallery/', include('gallery.urls'), name='gallery'),
+    path('newsletter/', include('newsletter.urls'), name='newsletter'),
+    path('comments/', include('comments.urls'), name='comments'),
     path('', include('core.urls')),
 ]
 
