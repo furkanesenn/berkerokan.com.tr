@@ -1,0 +1,49 @@
+@use "../abstracts";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: inherit;
+}
+
+html {
+  color-scheme: dark light;
+  font-size: 62.5%; // 1rem = 10px
+  hanging-punctuation: first last; // Aligns the text with the layout when there are quotes as first or last character
+}
+
+body {
+  min-height: 100dvh;
+  font-size: map-get(abstracts.$font-sizes, "regular");
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  background-color: abstracts.$dark;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance; // Makes headings' lines same width (all the lines are the same in width). Works for 2-4 lines.
+}
+
+p {
+  max-width: 75ch; // The most optimal reading width for long texts, aka paragraph.
+  text-wrap: pretty; // Eliminates the "orphan word" in longer texts. (The word that is alone itself in a seperate line then the others)
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :has(:target) {
+    scroll-behavior: smooth;
+  }
+}
