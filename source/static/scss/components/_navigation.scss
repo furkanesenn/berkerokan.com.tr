@@ -1,0 +1,53 @@
+@use "../abstracts";
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  grid-column: 1 / 2;
+
+  background-color: abstracts.$satin-linen;
+
+  padding: map-get(abstracts.$spacings, "md") map-get(abstracts.$spacings, "md") map-get(abstracts.$spacings, "xmassive");
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+  }
+
+  &__item {
+    text-align: right;
+  }
+
+  &__link {
+    color: abstracts.$black;
+    font-size: map-get(abstracts.$font-sizes, "sm");
+    font-style: normal;
+    font-weight: 500;
+    line-height: map-get(abstracts.$line-height-scale, "normal");
+    /* 147.465% */
+    letter-spacing: map-get(abstracts.$letter-spacing-scale, "wide");
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s ease;
+
+    &:hover,
+    &:active {
+      font-style: italic;
+    }
+  }
+
+  &__logo {
+    max-width: abstracts.$logo-width;
+  }
+}

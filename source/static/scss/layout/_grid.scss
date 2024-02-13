@@ -1,0 +1,13 @@
+.grid-body {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.grid-main {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  max-width: 114rem;
+  margin: 0 auto;
+
+  grid-column: 2 / -1;
+}

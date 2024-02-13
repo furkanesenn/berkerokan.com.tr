@@ -15,7 +15,8 @@ body {
   min-height: 100dvh;
   font-size: 1.6rem;
   font-family: ui-sans-serif, system-ui, sans-serif;
-  background-color: #121212;
+  background-color: #fff;
+  color: #111;
 }
 
 img,
@@ -44,4 +45,130 @@ p {
   :has(:target) {
     scroll-behavior: smooth;
   }
+}
+.grid-body {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.grid-main {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  max-width: 114rem;
+  margin: 0 auto;
+  grid-column: 2/-1;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  grid-column: 1/2;
+  background-color: #dfd8c9;
+  padding: 1.6rem 1.6rem 6rem;
+}
+.nav__main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav__links {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+.nav__item {
+  text-align: right;
+}
+.nav__link {
+  color: #111;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
+  /* 147.465% */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+.nav__link:hover, .nav__link:active {
+  font-style: italic;
+}
+.nav__logo {
+  max-width: 11rem;
+}
+
+.about-me {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 2fr;
+  padding: 2rem;
+  gap: 4rem;
+  grid-column: 1/-1;
+}
+.about-me .about-me__picture {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1/2;
+  gap: 1.6rem;
+}
+.about-me .about-me__image {
+  max-width: 32rem;
+  border-radius: 50%;
+  filter: grayscale(100%);
+}
+.about-me .about-me__image-alt {
+  text-align: center;
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.8;
+}
+.about-me .about-me__content {
+  grid-column: 2/-1;
+}
+.about-me .about-me__content-intro {
+  font-size: 4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.8;
+  margin-bottom: 2.8rem;
+}
+.about-me .about-me__content-text {
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  /* 118.75% */
+}
+.about-me .about-me__content-signature {
+  text-align: right;
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 400;
+  margin-top: 3.2rem;
+  line-height: 1.8;
+  /* 100% */
+}
+
+.works {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  gap: 4.5rem;
+  margin-top: 3rem;
+}
+
+.last-book {
+  grid-column: 1/2;
+}
+
+.quick-links {
+  grid-column: 2/3;
+}
+
+.book-quote {
+  grid-column: 3/4;
 }

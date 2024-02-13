@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Berker Okan</title>
+  <link href="{% static 'main.css' %}" rel="stylesheet" />
+
+  {% block base__head %} {% endblock %}
+</head>
+
+<body class="body grid-body">
+  <nav class="nav">
+    <img class="nav__logo" src="{% static 'images/logo.webp' %}" alt="Berker Okan Logo" />
+
+    <main class="nav__main">
+      <ul class="nav__links">
+        <li class="nav__item"><a href="#" class="nav__link">Hakkımda</a></li>
+        <li class="nav__item">
+          <a href="#" class="nav__link">Kitaplarım</a>
+        </li>
+        <li class="nav__item"><a href="#" class="nav__link">Yazılarım</a></li>
+        <li class="nav__item"><a href="#" class="nav__link">Galeri</a></li>
+        <li class="nav__item"><a href="#" class="nav__link">Bültenim</a></li>
+      </ul>
+
+      <!-- <footer class="nav__footer">
+          <ul class="nav__socials">
+            <li class="nav__social">
+              <a href="#" class="nav__social-link">Instagram</a>
+            </li>
+            <li class="nav__social">
+              <a href="#" class="nav__social-link">Twitter</a>
+            </li>
+          </ul>
+        </footer> -->
+    </main>
+  </nav>
+
+  <main class="main grid-main">{% block main %} {% endblock %}</main>
+
+  {% block base__main-last %} {% endblock %}
+</body>
+
+</html>

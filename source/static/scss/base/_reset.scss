@@ -17,7 +17,8 @@ body {
   min-height: 100dvh;
   font-size: map-get(abstracts.$font-sizes, "regular");
   font-family: ui-sans-serif, system-ui, sans-serif;
-  background-color: abstracts.$dark;
+  background-color: abstracts.$nero;
+  color: abstracts.$black;
 }
 
 img,

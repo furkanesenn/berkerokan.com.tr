@@ -1,0 +1,66 @@
+@use "../abstracts";
+
+// seperatorleri yap
+
+.about-me {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 2fr;
+  padding: 2rem;
+  gap: 4rem;
+
+  grid-column: 1 / -1;
+
+  .about-me__picture {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / 2;
+    gap: map-get(abstracts.$spacings, "md");
+  }
+
+  .about-me__image {
+    max-width: 32rem;
+    border-radius: 50%;
+    filter: grayscale(100%);
+  }
+
+  .about-me__image-alt {
+    text-align: center;
+
+    font-size: map-get(abstracts.$font-sizes, "sm");
+    font-style: italic;
+    font-weight: 400;
+    line-height: map-get(abstracts.$line-height-scale, "loose");
+  }
+
+  .about-me__content {
+    grid-column: 2 / -1;
+  }
+
+  .about-me__content-intro {
+    font-size: map-get(abstracts.$font-sizes, "huge");
+    font-style: normal;
+    font-weight: 400;
+    line-height: map-get(abstracts.$line-height-scale, "loose");
+    margin-bottom: map-get(abstracts.$spacings, "xxl");
+  }
+
+  .about-me__content-text {
+    font-size: map-get(abstracts.$font-sizes, "regular");
+    font-style: normal;
+    font-weight: 400;
+    line-height: map-get(abstracts.$line-height-scale, "tight");
+    /* 118.75% */
+  }
+
+
+  .about-me__content-signature {
+    text-align: right;
+    font-size: map-get(abstracts.$font-sizes, "lg");
+    font-style: normal;
+    font-weight: 400;
+    margin-top: map-get(abstracts.$spacings, "huge");
+    line-height: map-get(abstracts.$line-height-scale, "loose");
+    /* 100% */
+  }
+}

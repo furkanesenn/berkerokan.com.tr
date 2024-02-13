@@ -1,14 +1,87 @@
+{% extends "base.html" %}
+
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link href="{% static 'main.css' %}" rel="stylesheet" />
-  </head>
-  <body>
-    <h1>Home Page</h1>
-  </body>
-</html>
+{% block main %}
+<section class="about-me">
+  <picture class="about-me__picture">
+    <img class="about-me__image" src="{% static 'images/about-me-image.png' %}" />
+
+    <p class="about-me__image-alt">Fotoğraf: Berker Okan</p>
+  </picture>
+
+  <div class="about-me__content">
+    <p class="about-me__content-intro">Hoş geldiniz!</p>
+
+    <p class="about-me__content-text">
+      Merhaba, ben Berker Okan. Burası da benim kişisel web sitem!
+      <br />
+      <br />
+      2013 yılında yayımlanan Kırmızı Atkılı İstavrit kitabımla yazarlık
+      serüvenime başladım. Sırasıyla Mavi Kız Kahve Çocuk, Son Yolculuk ve
+      Hemingway (Vazgeçmeden Önce Deneyin) kitaplarını yazdım. Bir süredir de
+      Mırıldanmalar isimli podcast yayınını yapıyorum.
+      <br />
+      <br />
+      Bu web sitesini, hayatım boyunca yaptığım bütün çalışmalarımı bir arada
+      tutmak için ve hem kendime hem de okura bir andaç olması adına
+      hazırlıyorum. Ayrıca siteye üye olanlara her ay yayımlanacak özel
+      bültenimle takipçilerimle güçlü bir bağ kurmayı hedefliyorum.
+      <br />
+      <br />
+      Yazılarım kısmından yazdığım hikayeler, öyküler vb. arasında kelime ile
+      arama yapabilir, zamana ve türe göre filtreleyebilirsiniz. Aynı
+      şekilde kitaplarım ve podcast’lerim sayfalarında da daha detaylı dökümlere
+      ulaşabilirsiniz.
+      <br />
+      <br />
+      Web siteme ziyaretiniz için teşekkür ederim. Umarım keyifli vakit
+      geçirirsiniz. Hoş kalın..
+    </p>
+
+    <p class="about-me__content-signature">Berker.</p>
+  </div>
+</section>
+<section class="works">
+  <div class="work last-book">
+    <h2 class="work__heading">Son Yazdığım Kitap</h2>
+    <p class="work__alt-text">25 Ocak 2024</p>
+
+    <picture class="last-book-image">
+      <img src="{% static 'images/book-covder.png' %}" alt="Ernest Hemingway">
+    </picture>
+
+    <p class="last-book-name last-book-details">Ernest Hemingway</p>
+    <p class="last-book-genre last-book-details">Biyografi Kitabı</p>
+  </div>
+
+  <ul class="work quick-links">
+    <li class="quick-link__item">
+      <a href="#" class="quick-link">
+        <h2 class="work__heading">Kitaplarım</h2>
+        <p class="work__alt-text">Kütüphanemdeki tüm kitapları burada görebilir ve
+          detaylı arama / filtreleme yapabilirsiniz</p>
+      </a>
+      <a href="#" class="quick-link">
+        <h2 class="work__heading">Yazılarım</h2>
+        <p class="work__alt-text">Kütüphanemdeki kitabı bulunan tüm yazıları sayfada inceleyebilirsiniz.</p>
+      </a>
+      <a href="#" class="quick-link">
+        <h2 class="work__heading">Özel Bültenim</h2>
+        <p class="work__alt-text">Kütüphanemdeki kitapları ülkelere göre görebilir, merak ettiğiniz coğrafyaların
+          edebiyatına detaylı bakabilirsiniz.</p>
+      </a>
+    </li>
+  </ul>
+
+  <div class="work book-quote">
+    <h2 class="work__heading">Bir Parça Alıntı</h2>
+    <p class="work__alt-text">Bloomberg HT’de her hafta hazırlayıp sunduğum Pandora’nın Merakı adlı TV programı, Tuğçe
+      Arslan Üçer ile beraber yaptığımız 1 Kitap 1 Film 1 Şey podcast, Gatherin platformunda yürüttüğüm aylık kitap
+      kulüpleri, KAFA dergisinde her ay yazdığım kitap eleştirileri, K24 için yaptığım röportajlar, başka mecralarda
+      yayımlanan yazılarım ve söyleşilerim, 2017’den beri mare.design markası altında profesyonel olarak yürüttüğüm web
+      designer kariyerim ve daha fazlası.Bir sürü işe bulaşmış biri olarak yaptığım her şeyi bu sayfada listeledim,
+      benimle ilgili detaylı bilgiye buradan ulaşabilirsiniz.</p>
+  </div>
+</section>
+{% endblock %}
