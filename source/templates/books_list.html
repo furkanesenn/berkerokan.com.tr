@@ -1,77 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>My All Books</h1>
+{% extends "base.html"  %}
 
-    <form method="get" action="{% url 'books:book-search' %}">
+{% load static %}
+
+{% block main %}
+    <h1 class="book__heading">Kitaplarım</h1>
+
+    <form class="book-search__form" method="get" action="{% url 'books:book-search' %}">
       <label for="search-query"></label>
       <input
+        class="book-search__form-input"
         name="search-query"
         id="search-query"
-        placeholder="Enter your query..."
+        placeholder="Kelime ile Ara"
         value="{{search_query}}"
       />
 
-      <select id="genre" name="genre">
+      <select class="book-search__form-select" id="genre" name="genre">
         {% for genre in genres %} {% if genre == fgenre %}
-        <option value="{{genre}}" selected="selected">{{genre}}</option>
+        <option class="book-search__form-option" value="{{genre}}" selected="selected">{{genre}}</option>
         {% else %}
-        <option value="{{genre}}">{{genre}}</option>
+        <option class="book-search__form-option" value="{{genre}}">{{genre}}</option>
         {% endif %} {% endfor %}
       </select>
 
-      <select id="year" name="year">
+      <select class="book-search__form-select" id="year" name="year">
         {% for year in years %} {% if year == fyear %}
-        <option value="{{year}}" selected="selected">{{year}}</option>
+        <option class="book-search__form-option" value="{{year}}" selected="selected">{{year}}</option>
         {% else %}
-        <option value="{{year}}">{{year}}</option>
+        <option class="book-search__form-option" value="{{year}}">{{year}}</option>
         {% endif %} {% endfor %}
       </select>
 
-      <select id="sort" name="sort">
+      <select class="book-search__form-select" id="sort" name="sort">
         {% if sorting == "a-z" %}
-        <option value="a-z" selected="selected">A-Z</option>
-        <option value="date">Tarih</option>
+        <option class="book-search__form-option" value="a-z" selected="selected">A-Z</option>
+        <option class="book-search__form-option" value="date">Tarih</option>
         {% elif sorting == "date" %}
-        <option value="a-z">A-Z</option>
-        <option value="date" selected="selected">Tarih</option>
+        <option class="book-search__form-option" value="a-z">A-Z</option>
+        <option class="book-search__form-option" value="date" selected="selected">Tarih</option>
         {% else %}
-        <option value="a-z" selected="selected">A-Z</option>
-        <option value="date">Tarih</option>
+        <option class="book-search__form-option" value="a-z" selected="selected">A-Z</option>
+        <option class="book-search__form-option" value="date">Tarih</option>
         {% endif %}
       </select>
 
-      <input type="submit" value="Submit" />
+      <input class="book-search__form-input book-search__form-submit" type="submit" value="Submit" />
     </form>
 
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr)">
+    <div class="book__container">
       {% for book in books %}
-      <div>
+      <div class="book-item">
         <ul>
           {% if book.highlight_book %}
-          <li>Book highlighted</li>
+          <li class="highlighted">Benim Önerim</li>
           {% endif %}
-          <li>Book Name: {{ book.title }}</li>
-          <li>Book Author: {{ book.author }}</li>
-          <li>Book Genre: {{ book.genre }}</li>
-          <li>Book Date: {{ book.date }}</li>
-          <li>Book Price: {{ book.price }}</li>
-          <li>Book Price: {{ book.price }}</li>
-          <li>Book URL: {{ book.purchase_link }}</li>
+          <a href="{% url 'books:book-detail' book.id %}">
+          {% comment "" %}
+            <li>Book Name: {{ book.title }}</li>
+            <li>Book Author: {{ book.author }}</li>
+            <li>Book Genre: {{ book.genre }}</li>
+            <li>Book Date: {{ book.date }}</li>
+            <li>Book Price: {{ book.price }}</li>
+            <li>Book Price: {{ book.price }}</li>
+            <li>Book URL: {{ book.purchase_link }}</li>
+          {% endcomment %}
           <img src="{{ book.cover.url }}" width="246" height="400" />
           <br />
           <br />
-          <a href="{% url 'books:book-detail' book.id %}"
-            >View book details...</a
-          >
+          <p class="book-item__title">{{ book.title }}</p>
+          <p class="book-item__author">{{ book.author }}</p>
+          </a>
         </ul>
       </div>
       {% endfor %}
     </div>
-  </body>
-</html>
+{% endblock %}

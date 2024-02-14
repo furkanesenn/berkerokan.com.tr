@@ -5,6 +5,13 @@
   font: inherit;
 }
 
+a {
+  color: inherit;
+}
+a:hover {
+  font-style: italic;
+}
+
 html {
   color-scheme: dark light;
   font-size: 62.5%;
@@ -14,7 +21,8 @@ html {
 body {
   min-height: 100dvh;
   font-size: 1.6rem;
-  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
   background-color: #fff;
   color: #111;
 }
@@ -53,13 +61,14 @@ p {
 
 .grid-main {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  max-width: 114rem;
+  max-width: 120rem;
   margin: 0 auto;
   grid-column: 2/-1;
 }
 
 .nav {
+  position: fixed;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -84,7 +93,7 @@ p {
 }
 .nav__link {
   color: #111;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-style: normal;
   font-weight: 500;
   line-height: 1.5;
@@ -122,7 +131,7 @@ p {
 }
 .about-me .about-me__image-alt {
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-style: italic;
   font-weight: 400;
   line-height: 1.8;
@@ -136,6 +145,18 @@ p {
   font-weight: 400;
   line-height: 1.8;
   margin-bottom: 2.8rem;
+  position: relative;
+  font-family: "Libre Caslon Text", serif;
+}
+.about-me .about-me__content-intro::before {
+  content: "";
+  position: absolute;
+  width: 65%;
+  height: 1px;
+  background-color: #ccc;
+  right: 0;
+  top: 50%;
+  bottom: 50%;
 }
 .about-me .about-me__content-text {
   font-size: 1.6rem;
@@ -143,6 +164,7 @@ p {
   font-weight: 400;
   line-height: 1.2;
   /* 118.75% */
+  font-size: 1.8rem;
 }
 .about-me .about-me__content-signature {
   text-align: right;
@@ -152,6 +174,16 @@ p {
   margin-top: 3.2rem;
   line-height: 1.8;
   /* 100% */
+  position: relative;
+}
+.about-me .about-me__content-signature::before {
+  content: "";
+  position: absolute;
+  width: 20%;
+  height: 1px;
+  background-color: #ccc;
+  right: 9rem;
+  top: 50%;
 }
 
 .works {
@@ -161,14 +193,166 @@ p {
   margin-top: 3rem;
 }
 
+.work__heading {
+  font-size: 2.8rem;
+  font-family: "Libre Caslon Text", serif;
+  margin-bottom: 2rem;
+}
+.work__heading:has(img) {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-content: center;
+  gap: 1rem;
+}
+.work__alt-text {
+  font-family: "Libre Caslon Text", serif;
+  margin-bottom: 4rem;
+  position: relative;
+}
+.work__alt-text::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: -2rem;
+  width: 100%;
+  height: 0.9px;
+  background-color: #ccc;
+}
+.work.last-book .work__heading,
+.work.last-book .work__alt-text {
+  text-align: center;
+  margin: 0;
+}
+.work.last-book .last-book-details {
+  letter-spacing: 1px;
+  font-weight: 600;
+  text-align: center;
+}
+.work.last-book .last-book-image {
+  margin-bottom: 2rem;
+}
+.work.last-book .last-book-name {
+  font-size: 2rem;
+}
+.work.last-book .last-book-genre {
+  margin-bottom: 2rem;
+}
+.work.book-quote .work__alt-text::before, .work.last-book .work__alt-text::before {
+  display: none;
+}
+
 .last-book {
   grid-column: 1/2;
 }
 
 .quick-links {
   grid-column: 2/3;
+  list-style: none;
 }
 
 .book-quote {
   grid-column: 3/4;
+}
+
+.book__heading {
+  font-size: 4rem;
+  font-family: "Libre Caslon Text", serif;
+  position: relative;
+  align-self: end;
+  margin-bottom: 1rem;
+}
+.book__heading::before {
+  content: "";
+  position: absolute;
+  left: 24rem;
+  width: calc(100% - 24rem);
+  height: 1px;
+  background-color: #ccc;
+  top: 50%;
+}
+.book-search__form {
+  padding: 3rem;
+  height: fit-content;
+  background-color: #dfd8c9;
+}
+.book-search__form-input, .book-search__form-select, .book-search__form-option {
+  padding-inline: 2rem;
+  padding-block: 1rem;
+  font-size: 1.6rem;
+  border: solid 1px #666666;
+  background-color: #efefef;
+  color: #111;
+}
+.book__container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.book-item ul {
+  position: relative;
+}
+.book-item ul li {
+  list-style: none;
+  display: none;
+}
+.book-item ul li.highlighted {
+  display: block;
+  position: absolute;
+  top: -1.8rem;
+  left: 50%;
+  width: max-content;
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: "Libre Caslon Text", serif;
+  font-size: 2rem;
+}
+.book-item ul a {
+  text-decoration: none;
+}
+.book-item ul .book-item__title {
+  font-size: 2.4rem;
+  font-weight: 500;
+  text-align: center;
+  padding-inline: 1rem;
+}
+.book-item ul .book-item__author {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.article__container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.article__item a {
+  text-decoration: none;
+}
+.article__item a img {
+  aspect-ratio: 1/1;
+  width: 100%;
+}
+.article__item-title {
+  font-size: 2rem;
+  text-align: center;
+}
+.article__item-description {
+  text-align: center;
+}
+
+span.bold {
+  font-weight: 700;
+}
+
+main.load_effect {
+  animation: load_anim 0.6s ease-in 0.2s;
+}
+
+@keyframes load_anim {
+  0% {
+    filter: contrast(0) brightness(2);
+  }
+  100% {
+    filter: contrast(1) brightness(1);
+  }
 }

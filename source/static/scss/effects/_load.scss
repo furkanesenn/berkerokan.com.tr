@@ -1,0 +1,12 @@
+main.load_effect {
+  animation: load_anim 0.6s ease-in 0.2s;
+}
+
+@keyframes load_anim {
+  0% {
+    filter: contrast(0) brightness(2);
+  }
+  100% {
+    filter: contrast(1) brightness(1);
+  }
+}

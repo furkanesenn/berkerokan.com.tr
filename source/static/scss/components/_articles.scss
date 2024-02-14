@@ -1,0 +1,25 @@
+@use "../abstracts";
+
+.article {
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  &__item {
+    a {
+      text-decoration: none;
+      img {
+        aspect-ratio: 1/1;
+        width: 100%;
+      }
+    }
+    &-title {
+      font-size: map-get(abstracts.$font-sizes, "medium");
+      text-align: center;
+    }
+    &-description {
+        text-align: center;
+    }
+  }
+}

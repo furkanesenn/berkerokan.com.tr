@@ -20,6 +20,7 @@ def books_list(request):
     if len(books) == 0:
         return render(request, 'books_list.html', {"message": "No book object found.", "books": None, "genres": None, "years": None}, status=404)
     
+
     all_genres = models.Book.objects.values_list('genre', flat=True).distinct() # Get all unique genres
     all_years = map(lambda x: x.year, models.Book.objects.values_list('date', flat=True).distinct()) # Get all unique years 
     # values_list: Returns a QuerySet that returns dictionaries, rather than model instances, when used as an iterable.

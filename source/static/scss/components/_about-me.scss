@@ -27,7 +27,7 @@
   .about-me__image-alt {
     text-align: center;
 
-    font-size: map-get(abstracts.$font-sizes, "sm");
+    font-size: map-get(abstracts.$font-sizes, "regular");
     font-style: italic;
     font-weight: 400;
     line-height: map-get(abstracts.$line-height-scale, "loose");
@@ -43,6 +43,19 @@
     font-weight: 400;
     line-height: map-get(abstracts.$line-height-scale, "loose");
     margin-bottom: map-get(abstracts.$spacings, "xxl");
+    position: relative;
+    font-family: "Libre Caslon Text", serif;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 65%;
+      height: 1px;
+      background-color: abstracts.$silver;
+      right: 0;
+      top: 50%;
+      bottom: 50%;
+    }
   }
 
   .about-me__content-text {
@@ -51,8 +64,8 @@
     font-weight: 400;
     line-height: map-get(abstracts.$line-height-scale, "tight");
     /* 118.75% */
+    font-size: map-get(abstracts.$font-sizes, "regular-medium");
   }
-
 
   .about-me__content-signature {
     text-align: right;
@@ -62,5 +75,16 @@
     margin-top: map-get(abstracts.$spacings, "huge");
     line-height: map-get(abstracts.$line-height-scale, "loose");
     /* 100% */
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 20%;
+      height: 1px;
+      background-color: abstracts.$silver;
+      right: 9rem;
+      top: 50%;
+    }
   }
 }

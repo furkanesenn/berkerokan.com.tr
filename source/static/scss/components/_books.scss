@@ -1,0 +1,74 @@
+@use "../abstracts";
+
+.book {
+  &__heading {
+    font-size: map-get(abstracts.$font-sizes, "huge");
+    font-family: "Libre Caslon Text", serif;
+    position: relative;
+    align-self: end;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 24rem;
+      width: calc(100% - 24rem);
+      height: 1px;
+      background-color: abstracts.$silver;
+      top: 50%;
+    }
+    margin-bottom: 1rem;
+  }
+  &-search__form {
+    padding: 3rem;
+    height: fit-content;
+    background-color: abstracts.$satin-linen;
+
+    &-input,
+    &-select,
+    &-option {
+      padding-inline: 2rem;
+      padding-block: 1rem;
+      font-size: map-get(abstracts.$font-sizes, "regular");
+      border: solid 1px abstracts.$dove-gray;
+      background-color: abstracts.$gallery;
+      color: abstracts.$black;
+    }
+  }
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  &-item ul {
+    position: relative;
+    li {
+      list-style: none;
+      display: none;
+      &.highlighted {
+        display: block;
+        position: absolute;
+        top: -1.8rem;
+        left: 50%;
+        width: max-content;
+        transform: translateX(-50%);
+        text-align: center;
+        font-family: "Libre Caslon Text", serif;
+        font-size: map-get(abstracts.$font-sizes, "medium");
+      }
+    }
+    a {
+      text-decoration: none;
+    }
+    .book-item {
+      &__title {
+        font-size: map-get(abstracts.$font-sizes, "lg");
+        font-weight: map-get(abstracts.$font-weights, "medium");
+        text-align: center;
+        padding-inline: 1rem;
+      }
+      &__author {
+        font-size: map-get(abstracts.$font-sizes, "medium");
+        text-align: center;
+      }
+    }
+  }
+}

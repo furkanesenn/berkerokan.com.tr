@@ -5,8 +5,7 @@
 
 .grid-main {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  max-width: 114rem;
+  max-width: 120rem;
   margin: 0 auto;
 
   grid-column: 2 / -1;

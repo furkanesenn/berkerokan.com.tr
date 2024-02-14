@@ -1,3 +1,5 @@
+@use "../abstracts";
+
 .works {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
@@ -5,7 +7,63 @@
   margin-top: 3rem;
 }
 
-.work {}
+.work {
+  &__heading {
+    font-size: map-get(abstracts.$font-sizes, "xl");
+    font-family: "Libre Caslon Text", serif;
+    margin-bottom: 2rem;
+    &:has(img) {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-content: center;
+      gap: 1rem;
+    }
+  }
+  &__alt-text {
+    font-family: "Libre Caslon Text", serif;
+    margin-bottom: 4rem;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: "";
+      left: 0;
+      bottom: -2rem;
+      width: 100%;
+      height: 0.9px; // sadece 1px mi olsa?
+      background-color: abstracts.$silver;
+    }
+  }
+  &.last-book {
+    .work__heading,
+    .work__alt-text {
+      text-align: center;
+      margin: 0;
+    }
+    .last-book-details {
+      letter-spacing: 1px;
+      font-weight: map-get(abstracts.$font-weights, "semi-bold");
+      text-align: center;
+    }
+    .last-book-image {
+      margin-bottom: 2rem;
+    }
+    .last-book-name {
+      font-size: map-get(abstracts.$font-sizes, "medium");
+    }
+    .last-book-genre {
+      margin-bottom: 2rem;
+    }
+  }
+  &.book-quote,
+  &.last-book {
+    .work__alt-text {
+      &::before {
+        display: none;
+      }
+    }
+  }
+}
 
 .last-book {
   grid-column: 1 / 2;
@@ -13,6 +71,7 @@
 
 .quick-links {
   grid-column: 2 / 3;
+  list-style: none;
 }
 
 .book-quote {

@@ -7,6 +7,14 @@
   font: inherit;
 }
 
+a {
+  // text-decoration: none;
+  color: inherit;
+  &:hover {
+    font-style: italic;
+  }
+}
+
 html {
   color-scheme: dark light;
   font-size: 62.5%; // 1rem = 10px
@@ -16,7 +24,8 @@ html {
 body {
   min-height: 100dvh;
   font-size: map-get(abstracts.$font-sizes, "regular");
-  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto; // google fonts said to add this
   background-color: abstracts.$nero;
   color: abstracts.$black;
 }

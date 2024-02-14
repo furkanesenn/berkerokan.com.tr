@@ -1,0 +1,7 @@
+@use "../abstracts";
+
+span {
+  &.bold {
+    font-weight: map-get(abstracts.$font-weights, "bold");
+  }
+}

@@ -14,24 +14,24 @@
     <p class="about-me__content-intro">Hoş geldiniz!</p>
 
     <p class="about-me__content-text">
-      Merhaba, ben Berker Okan. Burası da benim kişisel web sitem!
+      Merhaba, ben <span class="bold">Berker Okan</span>. Burası da benim kişisel web sitem!
       <br />
       <br />
       2013 yılında yayımlanan Kırmızı Atkılı İstavrit kitabımla yazarlık
       serüvenime başladım. Sırasıyla Mavi Kız Kahve Çocuk, Son Yolculuk ve
       Hemingway (Vazgeçmeden Önce Deneyin) kitaplarını yazdım. Bir süredir de
-      Mırıldanmalar isimli podcast yayınını yapıyorum.
+      <a href="https://open.spotify.com/show/6dliHl4sLaj2qO6qTQQ1AL?si=5da1f248390f4035">Mırıldanmalar</a> isimli podcast yayınını yapıyorum.
       <br />
       <br />
       Bu web sitesini, hayatım boyunca yaptığım bütün çalışmalarımı bir arada
       tutmak için ve hem kendime hem de okura bir andaç olması adına
-      hazırlıyorum. Ayrıca siteye üye olanlara her ay yayımlanacak özel
-      bültenimle takipçilerimle güçlü bir bağ kurmayı hedefliyorum.
+      hazırlıyorum. Ayrıca siteye üye olanlara her ay yayımlanacak <a href="{% url "newsletter" %}"><span class="">özel
+        bültenimle</span></a> takipçilerimle güçlü bir bağ kurmayı hedefliyorum.
       <br />
       <br />
-      Yazılarım kısmından yazdığım hikayeler, öyküler vb. arasında kelime ile
+      <a href="{% url "articles:articles-list" %}">Yazılarım</a> kısmından yazdığım hikayeler, öyküler vb. arasında kelime ile
       arama yapabilir, zamana ve türe göre filtreleyebilirsiniz. Aynı
-      şekilde kitaplarım ve podcast’lerim sayfalarında da daha detaylı dökümlere
+      şekilde <a href="{% url "books:books-list" %}">kitaplarım</a> ve <a href="https://open.spotify.com/show/6dliHl4sLaj2qO6qTQQ1AL?si=c7c14b2620f64a54">podcast’lerim</a> sayfalarında da daha detaylı dökümlere
       ulaşabilirsiniz.
       <br />
       <br />
@@ -57,20 +57,19 @@
 
   <ul class="work quick-links">
     <li class="quick-link__item">
-      <a href="#" class="quick-link">
-        <h2 class="work__heading">Kitaplarım</h2>
-        <p class="work__alt-text">Kütüphanemdeki tüm kitapları burada görebilir ve
+
+          <h2 class="work__heading"><img src="{% static "icons/books.svg" %}" alt="book vector art" /><span>Kitaplarım</span></h2>
+        <p class="work__alt-text">Kütüphanemdeki tüm kitapları <a href="{% url "books:books-list" %}">burada</a> görebilir ve
           detaylı arama / filtreleme yapabilirsiniz</p>
-      </a>
-      <a href="#" class="quick-link">
-        <h2 class="work__heading">Yazılarım</h2>
-        <p class="work__alt-text">Kütüphanemdeki kitabı bulunan tüm yazıları sayfada inceleyebilirsiniz.</p>
-      </a>
-      <a href="#" class="quick-link">
-        <h2 class="work__heading">Özel Bültenim</h2>
-        <p class="work__alt-text">Kütüphanemdeki kitapları ülkelere göre görebilir, merak ettiğiniz coğrafyaların
-          edebiyatına detaylı bakabilirsiniz.</p>
-      </a>
+      
+      
+        <h2 class="work__heading"><img src="{% static "icons/pen.svg" alt="pen vector art" %}" /><span>Yazılarım</span></h2>
+        <p class="work__alt-text">Kütüphanemdeki kitabı bulunan tüm yazıları <a href="{% url "articles:articles-list" %}">bu sayfada</a> inceleyebilirsiniz.</p>
+      
+        <h2 class="work__heading"><img src="{% static "icons/world.svg" %}" alt="World vector art" /><span>Özel Bültenim</span></h2>
+        <p class="work__alt-text">Kütüphanemdeki kitapları ülkelere göre görebilir, merak ettiğiniz <a href="{% url "newsletter" %}">coğrafyaların
+          edebiyatına</a> detaylı bakabilirsiniz.</p>
+      
     </li>
   </ul>
 
