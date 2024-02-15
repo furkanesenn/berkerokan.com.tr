@@ -1,0 +1,79 @@
+@use "../abstracts";
+
+.gallery-detail {
+  #big-image-container {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    img {
+      width: auto;
+      height: 90vh;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      border: solid 1rem white;
+      border-radius: 1rem;
+      visibility: hidden;
+      &.active {
+        visibility: visible;
+      }
+    }
+    &:has(img.active) {
+      .background {
+        width: 100vw;
+        height: 100vh;
+        transform: translateX(-25%);
+      }
+    }
+    .background {
+      position: fixed;
+      background-color: rgba(abstracts.$black, 0.5);
+      left: 0;
+      top: 0;
+    }
+  }
+  &__heading {
+    font-size: map-get(abstracts.$font-sizes, "xxl");
+    font-family: "Libre Caslon Text", serif;
+    position: relative;
+    width: fit-content;
+    &::before {
+      content: "";
+      position: absolute;
+      right: -7rem;
+      width: 5rem;
+      height: 1px;
+      background-color: abstracts.$silver;
+      top: 50%;
+    }
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+  }
+  &__count {
+    text-align: start;
+  }
+  &__description {
+    font-size: map-get(abstracts.$font-sizes, "regular-medium");
+    letter-spacing: 0.5px;
+    line-height: 2rem;
+  }
+  &__main {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    &-item {
+      cursor: pointer;
+      height: 25rem;
+      &.active {
+        background-color: red;
+      }
+      &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      &__count {
+      }
+    }
+  }
+}

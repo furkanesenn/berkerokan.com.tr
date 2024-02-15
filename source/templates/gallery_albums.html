@@ -1,21 +1,19 @@
-{% extends "base.html"  %}
-
+{% extends "base.html" %}
 {% load static %}
-
 {% block main %}
+  <section class="gallery">
     <h1 class="gallery__heading">Galeri Albümüm</h1>
-
     <div class="gallery__container">
       {% for album in albums %}
         <div class="gallery__item">
           <a href="{% url 'gallery:gallery-album' album.id %}">
-          <img class="gallery__item-image" src="{{album.cover.url}}" />
-          <p class="gallery__item-title">{{ album.title }}</p>
-          <p class="gallery__item-description">{{ album.description }}</p>
-          <p class="gallery__item-count">{{ album.photos.all|length }} fotoğraf</p>
-        </a>
+            <img class="gallery__item-image" src="{{ album.cover.url }}" />
+            <p class="gallery__item-title">{{ album.title }}</p>
+            <p class="gallery__item-description">{{ album.description }}</p>
+            <p class="gallery__item-count">{{ album.photos.all|length }} fotoğraf</p>
+          </a>
         </div>
-      
       {% endfor %}
     </div>
+  </section>
 {% endblock %}

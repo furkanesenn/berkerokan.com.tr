@@ -1,22 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>{{ album.title }}</h1>
-    <p>{{ album.description }}</p>
-    <p>Album Impression: {{ album.impression_count }}</p>
-
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr)">
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+  <section class="gallery-detail">
+    <h1 class="gallery-detail__heading">{{ album.title }}</h1>
+    <p class="gallery-detail__count">Album Impression: {{ album.impression_count }}</p>
+    <p class="gallery-detail__description">{{ album.description }}</p>
+    <div class="gallery-detail__main">
+      <div id="big-image-container"></div>
       {% for photo in album.photos.all %}
-      <a href="{% url 'gallery:gallery-engagement' photo.id %}">
-        <img src="{{ photo.image.url }}" width="300" height="300" />
-        <p>View: {{ photo.view_count }}</p>
-      </a>
+        <div class="gallery-detail__main-item">
+          <img class="gallery-detail__main-item__image" src="{{ photo.image.url }}" />
+          <p class="gallery-detail__main-item__count">View: {{ photo.view_count }}</p>
+        </div>
+        {% comment "" %}
+        <a href="{% url 'gallery:gallery-engagement' photo.id %}">
+          <img class="gallery-detail__image" src="{{ photo.image.url }}" width="300" height="300" />
+          <p>View: {{ photo.view_count }}</p>
+        </a>{% endcomment %}
       {% endfor %}
     </div>
-  </body>
-</html>
+  </section>
+  <script defer src="{% static "js/gallery-detail.js" %}"></script>
+{% endblock %}
