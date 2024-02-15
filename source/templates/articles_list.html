@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block main %}
-    <h1>My All Articles</h1>
+    <h1 class="article__heading">Yazılarım</h1>
 
     <form class="article-search__form" method="get" action="{% url 'articles:article-search' %}">
       <label for="search-query"></label>
@@ -11,7 +11,7 @@
         class="article-search__form-input"
         name="search-query"
         id="search-query"
-        placeholder="Enter your query..."
+        placeholder="Kelimeye göre arat"
         value="{{search_query}}"
       />
 
@@ -51,9 +51,7 @@
       {% for article in articles %}
       <div class="article__item">
         <a href="{% url 'articles:article-detail' article.id %}">
-          <img src="{{article.cover.url}}" />
-          <br />
-          <br />
+          <img class="article__item-image" src="{{article.cover.url}}" />
           <p class="article__item-title">{{article.title}}</p>
           <p class="article__item-description">{{article.short_description}}</p>
           <p class="article__item-author">{{article.author}}</p>

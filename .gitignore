@@ -2,15 +2,8 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,django
 
 environment
-environment/
-environment/*
 
-venv/
-venv/*
-venv\
-venv\*
 venv
-./venv/
 ./venv
 
 ### Django ###

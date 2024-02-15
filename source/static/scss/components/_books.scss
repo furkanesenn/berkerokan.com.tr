@@ -46,10 +46,10 @@
       &.highlighted {
         display: block;
         position: absolute;
-        top: -1.8rem;
+        top: -2.2rem;
         left: 50%;
         width: max-content;
-        transform: translateX(-50%);
+        transform: translateX(-50%) skew(-15deg);
         text-align: center;
         font-family: "Libre Caslon Text", serif;
         font-size: map-get(abstracts.$font-sizes, "medium");
@@ -68,6 +68,10 @@
       &__author {
         font-size: map-get(abstracts.$font-sizes, "medium");
         text-align: center;
+      }
+      &__image {
+        margin-bottom: 2rem;
+        aspect-ratio: 3/5;
       }
     }
   }

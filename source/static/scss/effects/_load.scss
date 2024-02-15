@@ -1,12 +1,15 @@
 main.load_effect {
-  animation: load_anim 0.6s ease-in 0.2s;
+  opacity: 0;
+  animation: load_anim 0.45s ease-in 0.15s forwards;
 }
 
 @keyframes load_anim {
   0% {
+    opacity: 0;
     filter: contrast(0) brightness(2);
   }
   100% {
+    opacity: 1;
     filter: contrast(1) brightness(1);
   }
 }

@@ -3,7 +3,7 @@
 .works {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
-  gap: 4.5rem;
+  gap: 3.5rem;
   margin-top: 3rem;
 }
 
@@ -16,6 +16,7 @@
       display: grid;
       grid-template-columns: auto 1fr;
       align-content: center;
+      align-items: center;
       gap: 1rem;
     }
   }
@@ -47,6 +48,7 @@
     }
     .last-book-image {
       margin-bottom: 2rem;
+      margin-inline: 2rem;
     }
     .last-book-name {
       font-size: map-get(abstracts.$font-sizes, "medium");
@@ -61,6 +63,11 @@
       &::before {
         display: none;
       }
+    }
+  }
+  &__links {
+    li {
+      height: 100%;
     }
   }
 }

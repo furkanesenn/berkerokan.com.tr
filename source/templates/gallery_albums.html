@@ -1,23 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>My all gallery albums</h1>
+{% extends "base.html"  %}
 
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr)">
+{% load static %}
+
+{% block main %}
+    <h1 class="gallery__heading">Galeri Albümüm</h1>
+
+    <div class="gallery__container">
       {% for album in albums %}
-      <div>
-        <img src="{{album.cover.url}}" width="400" height="400" />
-        <p>{{ album.title }}</p>
-        <p>{{ album.description }}</p>
-        <p>{{ album.photos.all|length }}</p>
-        <a href="{% url 'gallery-album' album.id %}">Albümü görüntüle...</a>
-      </div>
+        <div class="gallery__item">
+          <a href="{% url 'gallery:gallery-album' album.id %}">
+          <img class="gallery__item-image" src="{{album.cover.url}}" />
+          <p class="gallery__item-title">{{ album.title }}</p>
+          <p class="gallery__item-description">{{ album.description }}</p>
+          <p class="gallery__item-count">{{ album.photos.all|length }} fotoğraf</p>
+        </a>
+        </div>
+      
       {% endfor %}
     </div>
-  </body>
-</html>
+{% endblock %}

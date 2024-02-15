@@ -1,0 +1,46 @@
+@use "../abstracts";
+
+.gallery {
+  &__heading {
+    font-size: map-get(abstracts.$font-sizes, "huge");
+    font-family: "Libre Caslon Text", serif;
+    position: relative;
+    align-self: end;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 34rem;
+      width: calc(100% - 34rem);
+      height: 1px;
+      background-color: abstracts.$silver;
+      top: 50%;
+    }
+    margin-bottom: 1rem;
+  }
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  &__item {
+    a {
+      text-decoration: none;
+    }
+    &-image {
+      margin-bottom: 2rem;
+    }
+    &-title {
+      font-size: map-get(abstracts.$font-sizes, "medium");
+      font-weight: map-get(abstracts.$font-weights, "medium");
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    &-description {
+      text-align: center;
+      margin-inline: 5px;
+    }
+    &-count {
+      text-align: end;
+    }
+  }
+}

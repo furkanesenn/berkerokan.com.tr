@@ -64,9 +64,8 @@
             <li>Book Price: {{ book.price }}</li>
             <li>Book URL: {{ book.purchase_link }}</li>
           {% endcomment %}
-          <img src="{{ book.cover.url }}" width="246" height="400" />
-          <br />
-          <br />
+          <li>{{ book.rating }}</li>
+          <img class="book-item__image" src="{{ book.cover.url }}" />
           <p class="book-item__title">{{ book.title }}</p>
           <p class="book-item__author">{{ book.author }}</p>
           </a>

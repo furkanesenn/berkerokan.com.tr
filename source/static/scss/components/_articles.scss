@@ -1,6 +1,38 @@
 @use "../abstracts";
 
 .article {
+  &__heading {
+    font-size: map-get(abstracts.$font-sizes, "huge");
+    font-family: "Libre Caslon Text", serif;
+    position: relative;
+    align-self: end;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 22rem;
+      width: calc(100% - 22rem);
+      height: 1px;
+      background-color: abstracts.$silver;
+      top: 50%;
+    }
+    margin-bottom: 1rem;
+  }
+  &-search__form {
+    padding: 3rem;
+    height: fit-content;
+    background-color: abstracts.$satin-linen;
+
+    &-input,
+    &-select,
+    &-option {
+      padding-inline: 2rem;
+      padding-block: 1rem;
+      font-size: map-get(abstracts.$font-sizes, "regular");
+      border: solid 1px abstracts.$dove-gray;
+      background-color: abstracts.$gallery;
+      color: abstracts.$black;
+    }
+  }
   &__container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -9,6 +41,9 @@
   &__item {
     a {
       text-decoration: none;
+      &:hover {
+        //font-style: normal;
+      }
       img {
         aspect-ratio: 1/1;
         width: 100%;
@@ -17,9 +52,21 @@
     &-title {
       font-size: map-get(abstracts.$font-sizes, "medium");
       text-align: center;
+      margin-bottom: 1rem;
+    }
+    &-image {
+      margin-bottom: 2rem;
     }
     &-description {
-        text-align: center;
+      text-align: center;
+      margin-inline: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    &-author {
+      font-size: map-get(abstracts.$font-sizes, "regular-medium");
+      font-family: "Libre Caslon Text", serif;
+      text-align: end;
+      font-style: italic;
     }
   }
 }

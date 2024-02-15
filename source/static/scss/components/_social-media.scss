@@ -1,0 +1,77 @@
+@use "../abstracts";
+
+.social-media {
+  padding-block: 3rem;
+  margin-top: 3rem;
+
+  &__heading {
+    position: relative;
+    font-size: map-get(abstracts.$font-sizes, "xl");
+    margin-bottom: 1rem;
+    font-family: "Libre Caslon Text", serif;
+    &::before {
+      position: absolute;
+      content: "";
+      left: 30rem;
+      width: calc(100% - 30rem);
+      height: 0.9px; // sadece 1px mi olsa?
+      background-color: abstracts.$silver;
+      top: 50%;
+    }
+  }
+  &__list {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  &__item {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    &-svg-link {
+      padding: 0.8rem;
+      border-radius: 50%;
+      background-color: abstracts.$satin-linen;
+      display: block;
+      width: fit-content;
+      transition: all 0.5s ease;
+      &:hover {
+        filter: invert(1);
+      }
+      .social-media__item-image {
+        width: 3.5rem;
+      }
+    }
+    &-right {
+      &-heading {
+        font-size: map-get(abstracts.$font-sizes, "medium");
+        font-weight: map-get(abstracts.$font-weights, "semi-bold");
+        &-link {
+          text-decoration: none;
+        }
+      }
+      &-description {
+      }
+    }
+  }
+  &__embeds {
+    margin-top: 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    .twitter-timeline {
+      height: 75rem !important;
+      overflow-y: scroll;
+      iframe {
+      }
+    }
+    .instagram-media {
+      height: 75rem;
+    }
+    .spotify-embed {
+      width: 100%;
+      grid-column: 1 / span 2;
+    }
+  }
+}
