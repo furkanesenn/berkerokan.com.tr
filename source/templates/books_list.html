@@ -68,6 +68,13 @@
           <img class="book-item__image" src="{{ book.cover.url }}" />
           <p class="book-item__title">{{ book.title }}</p>
           <p class="book-item__author">{{ book.author }}</p>
+          <div class="rating">
+            <img src="{{ STATIC_URL }}{{ book.star_list.star0 }}" />
+            <img src="{{ STATIC_URL }}{{ book.star_list.star1 }}" />
+            <img src="{{ STATIC_URL }}{{ book.star_list.star2 }}" />
+            <img src="{{ STATIC_URL }}{{ book.star_list.star3 }}" />
+            <img src="{{ STATIC_URL }}{{ book.star_list.star4 }}" />
+          </div>
           </a>
         </ul>
       </div>

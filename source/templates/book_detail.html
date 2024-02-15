@@ -1,14 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>{{ book.title }}</h1>
-    <img src="{{book.cover.url}}" width="400" height="600" />
-    <p>{{ book.description }}</p>
+{% extends "base.html"  %}
+
+{% load static %}
+
+{% block main %}
+    <h1 class="book-detail__heading">{{ book.title }}</h1>
+    <img class="book-detail__image" src="{{book.cover.url}}" width="400" height="600" />
+    <pre class="book-detail__description">{{ book.description|safe }}</pre>
+
+    <div class="book-detail__rating">
+      <img src="{{ STATIC_URL }}{{ star0 }}" />
+      <img src="{{ STATIC_URL }}{{ star1 }}" />
+      <img src="{{ STATIC_URL }}{{ star2 }}" />
+      <img src="{{ STATIC_URL }}{{ star3 }}" />
+      <img src="{{ STATIC_URL }}{{ star4 }}" />
+    </div>
 
     <br /><br />
 
@@ -75,5 +80,4 @@
 
       <input type="submit" value="Send comment" />
     </form>
-  </body>
-</html>
+{% endblock %}

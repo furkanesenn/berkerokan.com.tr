@@ -40,6 +40,15 @@
   }
   &-item ul {
     position: relative;
+    div.rating {
+      display: flex;
+      width: 100%;
+      gap: 0.5rem;
+      justify-content: center;
+      img {
+        width: 2.5rem;
+      }
+    }
     li {
       list-style: none;
       display: none;

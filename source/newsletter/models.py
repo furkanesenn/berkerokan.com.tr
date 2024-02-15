@@ -92,7 +92,7 @@ class Post(models.Model):
         return self.title
     
     def save(self, *args, **kwargs):
-        if not self.pk:
+        if not self.id:
             self.newsletter.last_posted_at = self.published_at
             self.newsletter.save()
             

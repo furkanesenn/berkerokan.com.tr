@@ -296,6 +296,15 @@ p {
 .book-item ul {
   position: relative;
 }
+.book-item ul div.rating {
+  display: flex;
+  width: 100%;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.book-item ul div.rating img {
+  width: 2.5rem;
+}
 .book-item ul li {
   list-style: none;
   display: none;

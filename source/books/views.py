@@ -3,6 +3,9 @@ from django.shortcuts import render, redirect
 from . import models
 from core.utils import search_engine, session_manager
 
+from django.conf import settings
+
+
 """
 TODOS:
 
@@ -27,7 +30,18 @@ def books_list(request):
     # flat: If True, this will be a flat list of single values instead of a list of one-tuples.
     # distinct: Returns a new QuerySet that uses SELECT DISTINCT in its SQL query.
     books, _ = search_engine.sort("a-z", books)
-    return render(request, 'books_list.html', {"books": books, "genres": all_genres, "years": all_years}, status=200)
+
+    context = {"genres": all_genres, "years": all_years, "STATIC_URL":settings.STATIC_URL}
+    for i, book in enumerate(books):
+        # karmaşık oldu ama salla
+        _dict = {f"star{j}":"icons/star-empty.svg" for j in range(5)}
+        rating = round(book.rating)
+        for i in range(5):
+            if rating >= i:
+                _dict[f"star{i}"] = "icons/star-filled.svg"
+        book.star_list = _dict
+    context["books"]=books
+    return render(request, 'books_list.html', context, status=200)
 
 # Search view 
 
@@ -40,7 +54,15 @@ def book_search(request):
 def book_detail(request, id):
     book = models.Book.objects.get(id=id)
     book.view()
-    return render(request, 'book_detail.html', {"book": book}, status=200) 
+    # karmaşık oldu ama salla
+    _dict = {f"star{j}":"icons/star-empty.svg" for j in range(5)}
+    rating = round(book.rating)
+    for i in range(5):
+        if rating >= i:
+            _dict[f"star{i}"] = "icons/star-filled.svg"
+    context = {"book": book, "STATIC_URL":settings.STATIC_URL}
+    context.update(_dict)
+    return render(request, 'book_detail.html', context, status=200) 
 
 # Rate book view
 
