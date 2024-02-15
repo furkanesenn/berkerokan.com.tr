@@ -9,37 +9,69 @@
     align-items: center;
     gap: 1rem;
     img {
-        width: 3.5rem;
+      width: 3.5rem;
     }
   }
   &__list {
   }
   &__item {
     list-style: none;
-    width: fit-content;
+    &.subcomment {
+      margin-left: 5rem;
+      .comments__item-top {
+        &-image {
+          padding: 0.5rem;
+        }
+        &-container {
+          padding: 1rem;
+        }
+      }
+    }
+    &-top {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto 1fr;
 
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto 1fr;
+      width: fit-content;
+      &-image {
+        margin-top: 0.5rem;
+        padding: 1rem;
+        border-radius: 50%;
+        background-color: abstracts.$noubel;
+        grid-row: 1 / span 2;
+        margin-right: 1rem;
+      }
+      &-container {
+        padding: 1.5rem;
+        background-color: abstracts.$satin-linen;
+        border-radius: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      &-author {
+        font-weight: map-get(abstracts.$font-weights, "semi-bold");
+      }
+      &-comment {
+      }
+    }
+    &-bottom {
+      &-action {
+        padding-block: 1rem;
+        padding-inline: 1.5rem;
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
 
-    &-image {
-      margin-top: 0.5rem;
-      padding: 1rem;
-      border-radius: 50%;
-      background-color: abstracts.$noubel;
-      grid-row: 1 / span 2;
-      margin-right: 1rem;
-    }
-    &-container {
-      padding: 1.5rem;
-      background-color: abstracts.$satin-linen;
-      border-radius: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    &-author {
-      font-weight: map-get(abstracts.$font-weights, "semi-bold");
-    }
-    &-comment {
+        background-color: abstracts.$black;
+        color: abstracts.$nero;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        &:hover {
+          opacity: 0.85;
+          font-style: normal;
+        }
+      }
     }
   }
 }

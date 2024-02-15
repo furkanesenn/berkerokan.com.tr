@@ -49,7 +49,8 @@
     &::before {
       content: "";
       position: absolute;
-      width: 65%;
+      left: 27rem;
+      width: calc(100% - 27rem);
       height: 1px;
       background-color: abstracts.$silver;
       right: 0;
@@ -70,7 +71,7 @@
   .about-me__content-signature {
     text-align: right;
     font-size: map-get(abstracts.$font-sizes, "lg");
-    font-style: normal;
+    font-style: italic;
     font-weight: 400;
     margin-top: map-get(abstracts.$spacings, "huge");
     line-height: map-get(abstracts.$line-height-scale, "loose");

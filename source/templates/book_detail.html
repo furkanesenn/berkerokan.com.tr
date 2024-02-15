@@ -53,10 +53,12 @@
     <ul class="comments__list">
       {% for comment in book.comments.all %}
         <li class="comments__item">
-          <img class="comments__item-image" src="{% static "icons/user.svg" %}" alt="user vector art" />
-          <div class="comments__item-container">
-            <p class="comments__item-author">{{ comment.author }}</p>
-          <p class="comments__item-comment">{{ comment.body }}</p>
+          <div class="comments__item-top">
+            <img class="comments__item-top-image" src="{% static "icons/user.svg" %}" alt="user vector art" />
+            <div class="comments__item-top-container">
+              <p class="comments__item-top-author">{{ comment.author }}</p>
+              <p class="comments__item-top-comment">{{ comment.body }}</p>
+            </div>
           </div>
         </li>
       {% endfor %}

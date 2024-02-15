@@ -1,118 +1,176 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>{{ article.title }}</h1>
-    <img src="{{article.cover.url}}" />
-    <p>{{ article.body }}</p>
-    <a href="{% url 'articles:article-like' article.id %}"
-      >Beğen. (Toplam {{article.like_count}} Beğeni Almış)</a
-    >
-    <br /><br /><br />
-
-    <ul>
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+  <section class="article-detail">
+    <div class="article-detail__left">
+      <img class="article-detail__left-image"
+           src="{{ article.cover.url }}"
+           alt="{{ article.title }} makale küçük resim" />
+      <a class="article-detail__left-like"
+         href="{% url 'articles:article-like' article.id %}">
+        <img src="{% static "icons/like-outline.svg" %}" alt="Like vector art" />
+      Beğen. (Toplam {{ article.like_count }} Beğeni Almış)</a>
+    </div>
+    <div class="article-detail__right">
+      <h1 class="article-detail__right-heading">{{ article.title }}</h1>
+      <div class="article-detail__right-horizontal">
+        <p class="article-detail__right-author">{{ article.author }}</p>
+        <div class="article-detail__right-date">
+          <time>{{ article.created_at|date }}</time>
+        </div>
+      </div>
+      <p class="article-detail__right-description">{{ article.body }}</p>
+    </div>
+  </section>
+  <br />
+  <br />
+  <br />
+  <section class="comments">
+    <h2 class="comments__heading">
+      <img src="{% static "icons/letter.svg" %}" alt="Letters vector art" />
+      Yorumlar
+    </h2>
+    <ul class="comments__list">
       {% for comment in article.comments.all %}
-      <li>
-        <p>{{ comment.author }}</p>
-        <p class="comment-body" id="{{comment.id}}" contenteditable="true">
-          {{ comment.body }}
-        </p>
-        <a href="{% url 'comment-delete' comment.id %}">Delete comment</a>
-        <a href="{% url 'comment-like' comment.id %}"
-          >Like comment ({{comment.like_count}})</a
-        >
-        <a href="{% url 'comment-report' comment.id %}">Report comment</a>
-        <form action="{% url 'comment-edit' comment.id %}" method="get">
-          <input type="hidden" name="body" id="body" value="test" />
-          <input type="submit" value="Edit comment" />
-        </form>
-
-        <ul>
-          {% for scomment in comment.subcomments.all reversed %}
-          <li>
-            <p>{{ scomment.author }}</p>
-            <p>{{ scomment.body }}</p>
-          </li>
-          {% endfor %}
-        </ul>
-
-        <form action="{% url 'comment-reply' comment.id %}" method="post">
-          {% csrf_token %}
-
-          <input
-            type="text"
-            name="first-name"
-            id="first-name"
-            placeholder="isim"
-          />
-          <input
-            type="text"
-            name="last-name"
-            id="last-name"
-            placeholder="soyisim"
-          />
-          <input type="email" name="email" id="email" placeholder="eposta" />
-          <textarea
-            name="body"
-            id="body"
-            cols="30"
-            rows="5"
-            placeholder="body"
-          ></textarea>
-
-          <label for="notify-me"
-            >Send me a notification email when my comment is answered</label
-          >
-          <input type="checkbox" name="notify-me" id="notify-me" checked />
-
-          <input type="submit" value="Reply to the comment" />
-        </form>
-      </li>
+        <li class="comments__item">
+          <div class="comments__item-top">
+            <img class="comments__item-top-image" src="{% static "icons/user.svg" %}" alt="user vector art" />
+            <div class="comments__item-top-container">
+              <p class="comments__item-top-author">{{ comment.author }}</p>
+              <p id="{{ comment.id }}"
+                 contenteditable="true"
+                 class="comments__item-top-comment">{{ comment.body }}</p>
+            </div>
+          </div>
+          <div class="comments__item-bottom">
+            <a class="comments__item-bottom-action"
+               href="{% url 'comment-delete' comment.id %}">
+              <img src="{% static "icons/trash.svg" %}" alt="Garbage can vector art" />
+            Delete comment</a>
+            <a class="comments__item-bottom-action"
+               href="{% url 'comment-like' comment.id %}">
+              <img src="{% static "icons/like-outline.svg" %}" alt="like vector art" />
+            Like comment ({{ comment.like_count }})</a>
+            <a class="comments__item-bottom-action"
+               href="{% url 'comment-report' comment.id %}">
+              <img src="{% static "icons/report.svg" %}" alt="Issue sign vector art" />
+            Report comment</a>
+            <br />
+            <br />
+            <form action="{% url 'comment-edit' comment.id %}" method="get">
+              <input type="hidden" name="body" id="body" value="test" />
+              <input class="comments__item-bottom-action"
+                     type="submit"
+                     value="Edit comment" />
+            </form>
+            <br />
+            <br />
+            <ul class="comments__list">
+              {% for scomment in comment.subcomments.all reversed %}
+                <li class="comments__item subcomment">
+                  <div class="comments__item-top">
+                    <img class="comments__item-top-image" src="{% static "icons/user.svg" %}" alt="user vector art" />
+                    <div class="comments__item-top-container">
+                      <p class="comments__item-top-author">{{ comment.author }}</p>
+                      <p class="comments__item-top-comment">{{ comment.body }}</p>
+                    </div>
+                  </div>
+                </li>
+              {% endfor %}
+            </ul>
+            <div class="add-comment subcomment">
+              <h3 class="add-comment__heading">
+                <img src="{% static "icons/pen.svg" %}" alt="pen vector art" />
+                Yorum Ekle
+              </h3>
+              <form class="add-comment__form"
+                    action="{% url 'comment-reply' comment.id %}"
+                    method="post">
+                {% csrf_token %}
+                <input class="add-comment__form-input"
+                       type="text"
+                       name="first-name"
+                       id="first-name"
+                       placeholder="isim" />
+                <input class="add-comment__form-input"
+                       type="text"
+                       name="last-name"
+                       id="last-name"
+                       placeholder="soyisim" />
+                <input class="add-comment__form-input fullwidth"
+                       type="email"
+                       name="email"
+                       id="email"
+                       placeholder="eposta" />
+                <textarea class="add-comment__form-textarea fullwidth"
+                          name="body"
+                          id="body"
+                          cols="30"
+                          rows="5"
+                          placeholder="body"></textarea>
+                <label class="add-comment__form-label" for="notify-me">Send me a notification email when my comment is answered</label>
+                <input class="add-comment__form-input checkbox"
+                       type="checkbox"
+                       name="notify-me"
+                       id="notify-me"
+                       checked />
+                <input class="add-comment__form-input submit"
+                       type="submit"
+                       value="Reply to the comment" />
+              </form>
+            </div>
+          </div>
+        </li>
       {% endfor %}
     </ul>
-
-    <br /><br />
-
-    <form method="post" action="{% url 'comment-send' article.id %}">
+  </section>
+  <br />
+  <br />
+  <div class="add-comment">
+    <h3 class="add-comment__heading"><img src="{% static "icons/pen.svg" %}" alt="Pen vector art"/>Yorum Ekle</h3>
+    <form class="add-comment__form"
+          method="post"
+          action="{% url 'comment-send' article.id %}">
       {% csrf_token %}
-
-      <input type="text" name="first-name" id="first-name" placeholder="isim" />
-      <input
-        type="text"
-        name="last-name"
-        id="last-name"
-        placeholder="soyisim"
-      />
-      <input type="email" name="email" id="email" placeholder="eposta" />
-      <textarea
-        name="body"
-        id="body"
-        cols="30"
-        rows="5"
-        placeholder="body"
-      ></textarea>
-      <input
-        type="text"
-        name="content-type"
-        id="content-type"
-        placeholder="content-type"
-        value="article"
-        required
-        readonly
-      />
-
-      <label for="notify-me"
-        >Send me a notification email when my comment is answered</label
-      >
-      <input type="checkbox" name="notify-me" id="notify-me" checked />
-
-      <input type="submit" value="Send comment" />
+      <input class="add-comment__form-input"
+             type="text"
+             name="first-name"
+             id="first-name"
+             placeholder="isim" />
+      <input class="add-comment__form-input"
+             type="text"
+             name="last-name"
+             id="last-name"
+             placeholder="soyisim" />
+      <input class="add-comment__form-input"
+             type="email"
+             name="email"
+             id="email"
+             placeholder="eposta" />
+      <textarea class="add-comment__form-textarea"
+                name="body"
+                id="body"
+                cols="30"
+                rows="5"
+                placeholder="body"></textarea>
+      <input class="add-comment__form-input hidden"
+             type="text"
+             name="content-type"
+             id="content-type"
+             placeholder="content-type"
+             value="article"
+             required
+             readonly />
+      <label class="add-comment__form-label" for="notify-me">Send me a notification email when my comment is answered</label>
+      <input class="add-comment__form-textarea checkbox"
+             type="checkbox"
+             name="notify-me"
+             id="notify-me"
+             checked />
+      <input class="add-comment__form-textarea submit"
+             type="submit"
+             value="Send comment" />
     </form>
-
-    <a href="#">Article Stats</a>
-  </body>
-</html>
+  </div>
+  <a href="#">Article Stats</a>
+{% endblock %}

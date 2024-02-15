@@ -1,14 +1,32 @@
 @use "../abstracts";
 
-.book-detail {
+.article-detail {
   display: flex;
   gap: 1rem;
   margin-top: 5rem;
   &__left {
     &-image {
-      aspect-ratio: 3/5;
-      height: 60rem;
+      height: auto;
       min-width: 35rem;
+      
+      margin-bottom: 2rem;
+    }
+    &-like {
+      text-decoration: none;
+      display: inline-flex;
+      margin-top: 1rem;
+      align-items: center;
+      width: fit-content;
+      gap: 1rem;
+      padding-block: 1rem;
+      padding-inline: 2rem;
+
+      background-color: abstracts.$black;
+      color: abstracts.$nero;
+      border-radius: 1rem;
+      img {
+        width: 3rem;
+      }
     }
   }
   &__right {
@@ -31,32 +49,8 @@
       font-weight: map-get(abstracts.$font-weights, "semi-bold");
       font-size: map-get(abstracts.$font-sizes, "medium");
     }
-    &-buy {
-      text-decoration: none;
-      text-transform: capitalize;
-      font-size: map-get(abstracts.$font-sizes, "regular-medium");
-      border-radius: 3px;
-      padding-block: 1rem;
-      padding-inline: 2rem;
-      background-color: abstracts.$black;
-      color: abstracts.$nero;
-      display: inline-flex;
-      align-items: center;
-      gap: 1rem;
-      width: fit-content;
-      img {
-        width: 2.5rem;
-        display: inline;
-        filter: invert(1);
-      }
-      transition: all 0.3s ease;
-      &:hover {
-        opacity: 0.85;
-        font-style: normal;
-      }
-    }
     &-description {
-      margin-top: 3rem;
+      margin-top: 2rem;
       font-size: map-get(abstracts.$font-sizes, "regular-medium");
       line-height: 2rem;
       letter-spacing: 0.5px;

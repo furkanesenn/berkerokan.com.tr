@@ -2,6 +2,21 @@
 
 .add-comment {
   margin-bottom: 6rem;
+  &.subcomment {
+    margin-left: 5rem;
+    .add-comment {
+      &__heading {
+        margin-top: 2rem;
+        font-size: map-get(abstracts.$font-sizes, "xl");
+        img {
+          width: 3.5rem;
+        }
+      }
+      &__form {
+        margin-inline: 2rem;
+      }
+    }
+  }
   &__heading {
     font-size: map-get(abstracts.$font-sizes, "xxl");
     font-family: "Libre Caslon Text", serif;
