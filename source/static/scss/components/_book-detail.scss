@@ -1,3 +1,83 @@
+@use "../abstracts";
+
 .book-detail {
-    
+  display: flex;
+  gap: 1rem;
+  margin-top: 5rem;
+  &__left {
+    &-image {
+      aspect-ratio: 3/5;
+      height: 60rem;
+      min-width: 35rem;
+    }
+  }
+  &__right {
+    flex-grow: 1;
+    &-heading {
+      font-size: map-get(abstracts.$font-sizes, "xxl");
+      font-family: "Libre Caslon Text", serif;
+      margin-bottom: 2rem;
+    }
+    &-horizontal {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      &.fullgap {
+        gap: 0;
+        justify-content: space-between;
+      }
+    }
+    &-author {
+      font-weight: map-get(abstracts.$font-weights, "semi-bold");
+      font-size: map-get(abstracts.$font-sizes, "medium");
+    }
+    &-buy {
+      text-decoration: none;
+      text-transform: capitalize;
+      font-size: map-get(abstracts.$font-sizes, "regular-medium");
+      border-radius: 3px;
+      padding-block: 1rem;
+      padding-inline: 2rem;
+      background-color: abstracts.$black;
+      color: abstracts.$nero;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      width: fit-content;
+      img {
+        width: 2.5rem;
+        display: inline;
+        filter: invert(1);
+      }
+      transition: all 0.3s ease;
+      &:hover {
+        opacity: 0.85;
+        font-style: normal;
+      }
+    }
+    &-description {
+      margin-top: 3rem;
+    }
+    &-rating {
+      display: flex;
+      img {
+        width: 3rem;
+      }
+    }
+  }
+  &__add-rating {
+    &-input,
+    &-select,
+    &-option {
+      padding-inline: 1.5rem;
+      padding-block: 1rem;
+      font-size: map-get(abstracts.$font-sizes, "regular");
+      border: solid 1px abstracts.$dove-gray;
+      background-color: abstracts.$gallery;
+      color: abstracts.$black;
+      &.scale {
+        min-width: 25rem;
+      }
+    }
+  }
 }

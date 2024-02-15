@@ -1,0 +1,58 @@
+@use "../abstracts";
+
+.add-comment {
+  margin-bottom: 6rem;
+  &__heading {
+    font-size: map-get(abstracts.$font-sizes, "xxl");
+    font-family: "Libre Caslon Text", serif;
+    margin-bottom: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    img {
+      width: 4rem;
+    }
+  }
+  &__form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    &-textarea {
+      resize: vertical;
+    }
+    &-input,
+    &-select,
+    &-option,
+    &-textarea {
+      padding-inline: 1.5rem;
+      padding-block: 1rem;
+      font-size: map-get(abstracts.$font-sizes, "regular-medium");
+      border: solid 1px abstracts.$dove-gray;
+      border-radius: 2px;
+      background-color: abstracts.$gallery;
+      color: abstracts.$black;
+      grid-column: span 2;
+      &.fullwidth {
+        grid-column: span 4;
+      }
+      &.hidden {
+        display: none;
+      }
+      &.left {
+        justify-self: start;
+      }
+      &.checkbox {
+        width: 2.5rem;
+        grid-column: span 1;
+        height: 2.5rem;
+      }
+      &.submit {
+        grid-column: 2 / span 2;
+      }
+    }
+    &-label {
+      font-size: map-get(abstracts.$font-sizes, "regular-medium");
+      grid-column: span 3;
+    }
+  }
+}

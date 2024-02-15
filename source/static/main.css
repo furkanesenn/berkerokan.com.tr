@@ -509,6 +509,171 @@ p {
   grid-column: 1/span 2;
 }
 
+.book-detail {
+  display: flex;
+  gap: 1rem;
+  margin-top: 5rem;
+}
+.book-detail__left-image {
+  aspect-ratio: 3/5;
+  height: 60rem;
+  min-width: 35rem;
+}
+.book-detail__right {
+  flex-grow: 1;
+}
+.book-detail__right-heading {
+  font-size: 3.4rem;
+  font-family: "Libre Caslon Text", serif;
+  margin-bottom: 2rem;
+}
+.book-detail__right-horizontal {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.book-detail__right-horizontal.fullgap {
+  gap: 0;
+  justify-content: space-between;
+}
+.book-detail__right-author {
+  font-weight: 600;
+  font-size: 2rem;
+}
+.book-detail__right-buy {
+  text-decoration: none;
+  text-transform: capitalize;
+  font-size: 1.8rem;
+  border-radius: 3px;
+  padding-block: 1rem;
+  padding-inline: 2rem;
+  background-color: #111;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  width: fit-content;
+  transition: all 0.3s ease;
+}
+.book-detail__right-buy img {
+  width: 2.5rem;
+  display: inline;
+  filter: invert(1);
+}
+.book-detail__right-buy:hover {
+  opacity: 0.85;
+  font-style: normal;
+}
+.book-detail__right-description {
+  margin-top: 3rem;
+}
+.book-detail__right-rating {
+  display: flex;
+}
+.book-detail__right-rating img {
+  width: 3rem;
+}
+.book-detail__add-rating-input, .book-detail__add-rating-select, .book-detail__add-rating-option {
+  padding-inline: 1.5rem;
+  padding-block: 1rem;
+  font-size: 1.6rem;
+  border: solid 1px #666666;
+  background-color: #efefef;
+  color: #111;
+}
+.book-detail__add-rating-input.scale, .book-detail__add-rating-select.scale, .book-detail__add-rating-option.scale {
+  min-width: 25rem;
+}
+
+.comments__heading {
+  font-size: 3.4rem;
+  font-family: "Libre Caslon Text", serif;
+  margin-bottom: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+.comments__heading img {
+  width: 3.5rem;
+}
+.comments__item {
+  list-style: none;
+  width: fit-content;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+}
+.comments__item-image {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  border-radius: 50%;
+  background-color: #b3b3b3;
+  grid-row: 1/span 2;
+  margin-right: 1rem;
+}
+.comments__item-container {
+  padding: 1.5rem;
+  background-color: #dfd8c9;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+}
+.comments__item-author {
+  font-weight: 600;
+}
+.add-comment {
+  margin-bottom: 6rem;
+}
+.add-comment__heading {
+  font-size: 3.4rem;
+  font-family: "Libre Caslon Text", serif;
+  margin-bottom: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.add-comment__heading img {
+  width: 4rem;
+}
+.add-comment__form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.add-comment__form-textarea {
+  resize: vertical;
+}
+.add-comment__form-input, .add-comment__form-select, .add-comment__form-option, .add-comment__form-textarea {
+  padding-inline: 1.5rem;
+  padding-block: 1rem;
+  font-size: 1.8rem;
+  border: solid 1px #666666;
+  border-radius: 2px;
+  background-color: #efefef;
+  color: #111;
+  grid-column: span 2;
+}
+.add-comment__form-input.fullwidth, .add-comment__form-select.fullwidth, .add-comment__form-option.fullwidth, .add-comment__form-textarea.fullwidth {
+  grid-column: span 4;
+}
+.add-comment__form-input.hidden, .add-comment__form-select.hidden, .add-comment__form-option.hidden, .add-comment__form-textarea.hidden {
+  display: none;
+}
+.add-comment__form-input.left, .add-comment__form-select.left, .add-comment__form-option.left, .add-comment__form-textarea.left {
+  justify-self: start;
+}
+.add-comment__form-input.checkbox, .add-comment__form-select.checkbox, .add-comment__form-option.checkbox, .add-comment__form-textarea.checkbox {
+  width: 2.5rem;
+  grid-column: span 1;
+  height: 2.5rem;
+}
+.add-comment__form-input.submit, .add-comment__form-select.submit, .add-comment__form-option.submit, .add-comment__form-textarea.submit {
+  grid-column: 2/span 2;
+}
+.add-comment__form-label {
+  font-size: 1.8rem;
+  grid-column: span 3;
+}
+
 span.bold {
   font-weight: 700;
 }

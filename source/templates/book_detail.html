@@ -1,83 +1,88 @@
-{% extends "base.html"  %}
-
+{% extends "base.html" %}
 {% load static %}
-
 {% block main %}
-    <h1 class="book-detail__heading">{{ book.title }}</h1>
-    <img class="book-detail__image" src="{{book.cover.url}}" width="400" height="600" />
-    <pre class="book-detail__description">{{ book.description|safe }}</pre>
-
-    <div class="book-detail__rating">
-      <img src="{{ STATIC_URL }}{{ star0 }}" />
-      <img src="{{ STATIC_URL }}{{ star1 }}" />
-      <img src="{{ STATIC_URL }}{{ star2 }}" />
-      <img src="{{ STATIC_URL }}{{ star3 }}" />
-      <img src="{{ STATIC_URL }}{{ star4 }}" />
+  <section class="book-detail">
+    <div class="book-detail__left">
+      <img class="book-detail__left-image" src="{{ book.cover.url }}" alt="{{ book.title }} kitabı kapağı" />
     </div>
-
-    <br /><br />
-
-    <form method="POST" action="{% url 'books:book-rate' book.id %}">
-      {% csrf_token %}
-
-      <input
-        placeholder="Your rating (0-5 scale)"
-        name="rating"
-        id="rating"
-        type="number"
-        max="5"
-        min="0"
-      />
-
-      <input type="submit" value="Rate" />
-    </form>
-
-    <br /><br /><br />
-
-    <ul>
+    <div class="book-detail__right">
+      <h1 class="book-detail__right-heading">{{ book.title }}</h1>
+      <div class="book-detail__right-horizontal fullgap">
+        <p class="book-detail__right-author">{{ book.author }}</p>
+        <a class="book-detail__right-buy" href="{{ book.purchase_link }}">
+          <img src="{% static "icons/book.svg" %}" alt="book vector art" />
+        Buradan Alabilirsiniz</a>
+      </div>
+      <div class="book-detail__right-horizontal">
+        <div class="book-detail__right-rating">
+          <img alt="Star vector art" src="{{ STATIC_URL }}{{ star0 }}" />
+          <img alt="Star vector art" src="{{ STATIC_URL }}{{ star1 }}" />
+          <img alt="Star vector art" src="{{ STATIC_URL }}{{ star2 }}" />
+          <img alt="Star vector art" src="{{ STATIC_URL }}{{ star3 }}" />
+          <img alt="Star vector art" src="{{ STATIC_URL }}{{ star4 }}" />
+        </div>
+        <div class="book-detail__right-date">
+          <time>{{ book.created_at|date }}</time>
+        </div>
+      </div>
+      <pre class="book-detail__right-description">{{ book.description|safe }}</pre>
+    </div>
+  </section>
+  <br />
+  <br />
+  <form class="book-detail__add-rating"
+        method="POST"
+        action="{% url 'books:book-rate' book.id %}">
+    {% csrf_token %}
+    <input class="book-detail__add-rating-input scale"
+           placeholder="Your rating (0-5 scale)"
+           name="rating"
+           id="rating"
+           type="number"
+           max="5"
+           min="0" />
+    <input class="book-detail__add-rating-input submit"
+           type="submit"
+           value="Rate" />
+  </form>
+  <br />
+  <br />
+  <br />
+  <section class="comments">
+    <h2 class="comments__heading"><img src="{% static "icons/letter.svg" %}" alt="Letters vector art" />Yorumlar</h2>
+    <ul class="comments__list">
       {% for comment in book.comments.all %}
-      <li>
-        <p>{{ comment.author }}</p>
-        <p>{{ comment.body }}</p>
-      </li>
+        <li class="comments__item">
+          <img class="comments__item-image" src="{% static "icons/user.svg" %}" alt="user vector art" />
+          <div class="comments__item-container">
+            <p class="comments__item-author">{{ comment.author }}</p>
+          <p class="comments__item-comment">{{ comment.body }}</p>
+          </div>
+        </li>
       {% endfor %}
     </ul>
-
-    <br /><br />
-
-    <form method="post" action="{% url 'comment-send' book.id %}">
+  </section>
+  <br />
+  <br />
+  <section class="add-comment">
+    <h2 class="add-comment__heading"><img src="{% static "icons/pen.svg" %}" alt="pen vector art" />Yorum Ekle</h2>
+    <form class="add-comment__form" method="post" action="{% url 'comment-send' book.id %}">
       {% csrf_token %}
-
-      <input type="text" name="first-name" id="first-name" placeholder="isim" />
-      <input
-        type="text"
-        name="last-name"
-        id="last-name"
-        placeholder="soyisim"
-      />
-      <input type="email" name="email" id="email" placeholder="eposta" />
-      <textarea
-        name="body"
-        id="body"
-        cols="30"
-        rows="5"
-        placeholder="body"
-      ></textarea>
-      <input
-        type="text"
-        name="content-type"
-        id="content-type"
-        placeholder="content-type"
-        value="book"
-        required
-        readonly
-      />
-
-      <label for="notify-me"
-        >Send me a notification email when my comment is answered</label
-      >
-      <input type="checkbox" name="notify-me" id="notify-me" checked />
-
-      <input type="submit" value="Send comment" />
+      <input class="add-comment__form-input" type="text" name="first-name" id="first-name" placeholder="isim" />
+      <input class="add-comment__form-input" type="text" name="last-name" id="last-name" placeholder="soyisim" />
+      <input class="add-comment__form-input fullwidth" type="email" name="email" id="email" placeholder="eposta" />
+      <textarea class="add-comment__form-textarea fullwidth" name="body" id="body" cols="30" rows="5"  placeholder="body"></textarea>
+      <input  class="add-comment__form-input hidden" 
+            type="text"
+             name="content-type"
+             id="content-type"
+             placeholder="content-type"
+             value="book"
+             required
+             readonly />
+      <label class="add-comment__form-label" for="notify-me">Send me a notification email when my comment is answered</label>
+      <input class="add-comment__form-input left checkbox" type="checkbox" name="notify-me" id="notify-me" checked />
+      <input class="add-comment__form-input submit" type="submit" value="Send comment" />
     </form>
+  </section>
 {% endblock %}
