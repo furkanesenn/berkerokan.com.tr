@@ -12,8 +12,7 @@
 
   background-color: abstracts.$satin-linen;
 
-  padding: map-get(abstracts.$spacings, "md") map-get(abstracts.$spacings, "md")
-    map-get(abstracts.$spacings, "xmassive");
+  padding: map-get(abstracts.$spacings, "md") map-get(abstracts.$spacings, "md") map-get(abstracts.$spacings, "xmassive");
 
   &__main {
     display: flex;
@@ -42,7 +41,6 @@
     letter-spacing: map-get(abstracts.$letter-spacing-scale, "wide");
     text-transform: uppercase;
     text-decoration: none;
-    transition: all 0.25s ease;
 
     &:hover,
     &:active {

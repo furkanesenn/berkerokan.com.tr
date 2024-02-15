@@ -43,10 +43,18 @@
             </div>
           </div>
           <div class="comments__item-bottom">
+            {% if request.user.is_superuser %}
+            <form action="{% url 'comment-edit' comment.id %}" method="get">
+              <input type="hidden" name="body" id="body" value="test" />
+              <input class="comments__item-bottom-action"
+                     type="submit"
+                     value="Edit comment" />
+            </form>
             <a class="comments__item-bottom-action"
-               href="{% url 'comment-delete' comment.id %}">
-              <img src="{% static "icons/trash.svg" %}" alt="Garbage can vector art" />
-            Delete comment</a>
+            href="{% url 'comment-delete' comment.id %}">
+           <img src="{% static "icons/trash.svg" %}" alt="Garbage can vector art" />
+         Delete comment</a>
+            {% endif %}
             <a class="comments__item-bottom-action"
                href="{% url 'comment-like' comment.id %}">
               <img src="{% static "icons/like-outline.svg" %}" alt="like vector art" />
@@ -57,12 +65,7 @@
             Report comment</a>
             <br />
             <br />
-            <form action="{% url 'comment-edit' comment.id %}" method="get">
-              <input type="hidden" name="body" id="body" value="test" />
-              <input class="comments__item-bottom-action"
-                     type="submit"
-                     value="Edit comment" />
-            </form>
+
             <br />
             <br />
             <ul class="comments__list">

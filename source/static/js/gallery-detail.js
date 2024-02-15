@@ -7,15 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
   bigImageContainer.appendChild(background);
   bigImageContainer.appendChild(image);
 
-  image.addEventListener("click", () => {
-    image.src = "";
-    image.classList.remove("active");
-    images.forEach((e) => {
-      e.classList.remove("active");
-    });
-    document.body.style.overflowY = "scroll";
-  });
-  background.addEventListener("click", () => {
+  bigImageContainer.addEventListener("click", () => {
     image.src = "";
     image.classList.remove("active");
     images.forEach((e) => {

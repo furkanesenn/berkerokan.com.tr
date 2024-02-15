@@ -67,16 +67,7 @@ class Book(models.Model):
         self.genre = 'Diğer'
       if self.description == '':
         self.description = self.title + ' kitabı hakkında bilgi edinmek için tıklayın.'
-    
-    if self.send_email_to_subscribers:
-      subscribers = Subscriber.objects.all()
-      highlight_post = Post.objects.create(
-        title=self.highlight_email_subject,
-        content=self.highlight_email_content,
-        newsletter=Newsletter.objects.first()
-      )
-      email.send_book_highlight_email(subscribers, highlight_post)
-
+        
     super().save(*args, **kwargs)
 
   class Meta:

@@ -4,13 +4,15 @@
   display: flex;
   gap: 1rem;
   margin-top: 5rem;
+
   &__left {
     &-image {
       height: auto;
       min-width: 35rem;
-      
+
       margin-bottom: 2rem;
     }
+
     &-like {
       text-decoration: none;
       display: inline-flex;
@@ -24,45 +26,57 @@
       background-color: abstracts.$black;
       color: abstracts.$nero;
       border-radius: 1rem;
+
       img {
         width: 3rem;
       }
     }
   }
+
   &__right {
     flex-grow: 1;
+
     &-heading {
       font-size: map-get(abstracts.$font-sizes, "xxl");
       font-family: "Libre Caslon Text", serif;
       margin-bottom: 2rem;
     }
+
     &-horizontal {
       display: flex;
       align-items: center;
       gap: 2rem;
+
       &.fullgap {
         gap: 0;
         justify-content: space-between;
       }
     }
+
     &-author {
       font-weight: map-get(abstracts.$font-weights, "semi-bold");
       font-size: map-get(abstracts.$font-sizes, "medium");
     }
+
     &-description {
       margin-top: 2rem;
-      font-size: map-get(abstracts.$font-sizes, "regular-medium");
+      font-size: 1.6rem;
       line-height: 2rem;
-      letter-spacing: 0.5px;
+      /* letter-spacing: 0.5px; */
+      line-height: 1.35;
     }
+
     &-rating {
       display: flex;
+
       img {
         width: 3rem;
       }
     }
   }
+
   &__add-rating {
+
     &-input,
     &-select,
     &-option {
@@ -72,6 +86,7 @@
       border: solid 1px abstracts.$dove-gray;
       background-color: abstracts.$gallery;
       color: abstracts.$black;
+
       &.scale {
         min-width: 25rem;
       }

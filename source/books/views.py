@@ -53,16 +53,10 @@ def book_search(request):
     
 def book_detail(request, id):
     book = models.Book.objects.get(id=id)
-    book.view()
-    # karmaşık oldu ama salla
-    _dict = {f"star{j}":"icons/star-empty.svg" for j in range(5)}
-    rating = round(book.rating)
-    for i in range(5):
-        if rating >= i:
-            _dict[f"star{i}"] = "icons/star-filled.svg"
-    context = {"book": book, "STATIC_URL":settings.STATIC_URL}
-    context.update(_dict)
-    return render(request, 'book_detail.html', context, status=200) 
+    book.view_count += 1
+    book.save()
+
+    return render(request, 'book_detail.html', {"book": book}, status=200) 
 
 # Rate book view
 

@@ -1,7 +1,5 @@
 @use "../abstracts";
 
-// seperatorleri yap
-
 .about-me {
   display: grid;
   align-items: center;
@@ -16,10 +14,11 @@
     flex-direction: column;
     grid-column: 1 / 2;
     gap: map-get(abstracts.$spacings, "md");
+    align-items: center;
   }
 
   .about-me__image {
-    max-width: 28rem;
+    width: 32.2rem;
     border-radius: 50%;
     filter: grayscale(100%);
   }
@@ -65,7 +64,7 @@
     font-weight: 400;
     line-height: map-get(abstracts.$line-height-scale, "tight");
     /* 118.75% */
-    font-size: map-get(abstracts.$font-sizes, "regular-medium");
+    font-size: map-get(abstracts.$font-sizes, "regular");
   }
 
   .about-me__content-signature {

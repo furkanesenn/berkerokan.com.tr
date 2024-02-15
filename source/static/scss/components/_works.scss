@@ -12,6 +12,7 @@
     font-size: map-get(abstracts.$font-sizes, "xl");
     font-family: "Libre Caslon Text", serif;
     margin-bottom: 2rem;
+
     &:has(img) {
       display: grid;
       grid-template-columns: auto 1fr;
@@ -20,43 +21,45 @@
       gap: 1rem;
     }
   }
+
   &__alt-text {
-    font-family: "Libre Caslon Text", serif;
+    &--format {
+      font-family: "Libre Caslon Text", serif;
+    }
+
+    font-weight: map-get(abstracts.$font-weights, "regular") !important;
     margin-bottom: 4rem;
     position: relative;
-
-    &::before {
-      position: absolute;
-      content: "";
-      left: 0;
-      bottom: -2rem;
-      width: 100%;
-      height: 0.9px; // sadece 1px mi olsa?
-      background-color: abstracts.$silver;
-    }
+    line-height: 1.5;
   }
+
   &.last-book {
+
     .work__heading,
     .work__alt-text {
       text-align: center;
       margin: 0;
     }
+
     .last-book-details {
-      letter-spacing: 1px;
       font-weight: map-get(abstracts.$font-weights, "semi-bold");
       text-align: center;
     }
+
     .last-book-image {
       margin-bottom: 2rem;
       margin-inline: 2rem;
     }
+
     .last-book-name {
       font-size: map-get(abstracts.$font-sizes, "medium");
     }
+
     .last-book-genre {
       margin-bottom: 2rem;
     }
   }
+
   &.book-quote,
   &.last-book {
     .work__alt-text {
@@ -65,7 +68,18 @@
       }
     }
   }
+
   &__links {
+    &-item:not(:last-child) .work__alt-text::before {
+      position: absolute;
+      content: "";
+      left: 0;
+      bottom: -4rem;
+      width: 100%;
+      height: 0.9px; // sadece 1px mi olsa?
+      background-color: abstracts.$silver;
+    }
+
     li {
       height: 100%;
     }
@@ -74,6 +88,10 @@
 
 .last-book {
   grid-column: 1 / 2;
+
+  &-image img {
+    margin: 0 auto;
+  }
 }
 
 .quick-links {
@@ -81,6 +99,15 @@
   list-style: none;
 }
 
+.quick-link {
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
 .book-quote {
   grid-column: 3 / 4;
+  margin-inline-start: 2rem;
 }

@@ -1,12 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 {% block main %}
-  <section class="gallery-detail">
+<section class="gallery-detail">
     <h1 class="gallery-detail__heading">{{ album.title }}</h1>
     <p class="gallery-detail__count">Album Impression: {{ album.impression_count }}</p>
     <p class="gallery-detail__description">{{ album.description }}</p>
     <div class="gallery-detail__main">
-      <div id="big-image-container"></div>
       {% for photo in album.photos.all %}
         <div class="gallery-detail__main-item">
           <img class="gallery-detail__main-item__image" src="{{ photo.image.url }}" />
@@ -21,4 +20,9 @@
     </div>
   </section>
   <script defer src="{% static "js/gallery-detail.js" %}"></script>
+{% endblock %}
+
+{% block base__main-last %}
+<div id="big-image-container" class="big-image-container"></div>  
+
 {% endblock %}

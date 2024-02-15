@@ -61,7 +61,7 @@ p {
 
 .grid-main {
   display: grid;
-  width: 50%;
+  width: 114rem;
   margin: 0 auto;
   grid-column: 2/-1;
 }
@@ -101,7 +101,6 @@ p {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  transition: all 0.25s ease;
 }
 .nav__link:hover, .nav__link:active {
   font-style: italic;
@@ -123,9 +122,10 @@ p {
   flex-direction: column;
   grid-column: 1/2;
   gap: 1.6rem;
+  align-items: center;
 }
 .about-me .about-me__image {
-  max-width: 28rem;
+  width: 32.2rem;
   border-radius: 50%;
   filter: grayscale(100%);
 }
@@ -165,7 +165,7 @@ p {
   font-weight: 400;
   line-height: 1.2;
   /* 118.75% */
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 .about-me .about-me__content-signature {
   text-align: right;
@@ -207,18 +207,13 @@ p {
   gap: 1rem;
 }
 .work__alt-text {
-  font-family: "Libre Caslon Text", serif;
+  font-weight: 400 !important;
   margin-bottom: 4rem;
   position: relative;
+  line-height: 1.5;
 }
-.work__alt-text::before {
-  position: absolute;
-  content: "";
-  left: 0;
-  bottom: -2rem;
-  width: 100%;
-  height: 0.9px;
-  background-color: #ccc;
+.work__alt-text--format {
+  font-family: "Libre Caslon Text", serif;
 }
 .work.last-book .work__heading,
 .work.last-book .work__alt-text {
@@ -226,7 +221,6 @@ p {
   margin: 0;
 }
 .work.last-book .last-book-details {
-  letter-spacing: 1px;
   font-weight: 600;
   text-align: center;
 }
@@ -243,6 +237,15 @@ p {
 .work.book-quote .work__alt-text::before, .work.last-book .work__alt-text::before {
   display: none;
 }
+.work__links-item:not(:last-child) .work__alt-text::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: -4rem;
+  width: 100%;
+  height: 0.9px;
+  background-color: #ccc;
+}
 .work__links li {
   height: 100%;
 }
@@ -250,14 +253,24 @@ p {
 .last-book {
   grid-column: 1/2;
 }
+.last-book-image img {
+  margin: 0 auto;
+}
 
 .quick-links {
   grid-column: 2/3;
   list-style: none;
 }
 
+.quick-link__item {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 .book-quote {
   grid-column: 3/4;
+  margin-inline-start: 2rem;
 }
 
 .book__heading {
@@ -292,7 +305,7 @@ p {
 .book__container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  gap: 3rem;
 }
 .book-item ul {
   position: relative;
@@ -337,6 +350,7 @@ p {
 .book-item ul .book-item__image {
   margin-bottom: 2rem;
   aspect-ratio: 3/5;
+  width: 27.7rem;
 }
 
 .article__heading {
@@ -770,9 +784,10 @@ p {
 }
 .article-detail__right-description {
   margin-top: 2rem;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   line-height: 2rem;
-  letter-spacing: 0.5px;
+  /* letter-spacing: 0.5px; */
+  line-height: 1.35;
 }
 .article-detail__right-rating {
   display: flex;
@@ -792,34 +807,26 @@ p {
   min-width: 25rem;
 }
 
-.gallery-detail #big-image-container {
+.big-image-container {
   position: fixed;
-  left: 50%;
-  top: 50%;
-}
-.gallery-detail #big-image-container img {
-  width: auto;
-  height: 90vh;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-  border: solid 1rem white;
-  border-radius: 1rem;
-  visibility: hidden;
-}
-.gallery-detail #big-image-container img.active {
-  visibility: visible;
-}
-.gallery-detail #big-image-container:has(img.active) .background {
-  width: 100vw;
-  height: 100vh;
-  transform: translateX(-25%);
-}
-.gallery-detail #big-image-container .background {
-  position: fixed;
-  background-color: rgba(17, 17, 17, 0.5);
+  inset: 0;
   left: 0;
   top: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  display: none;
 }
+.big-image-container:has(img.active) {
+  display: flex;
+}
+
+html:has(.big-image-container img.active) {
+  overflow: hidden;
+}
+
 .gallery-detail__heading {
   font-size: 3.4rem;
   font-family: "Libre Caslon Text", serif;

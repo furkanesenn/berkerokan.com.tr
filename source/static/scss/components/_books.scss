@@ -6,6 +6,7 @@
     font-family: "Libre Caslon Text", serif;
     position: relative;
     align-self: end;
+
     &::before {
       content: "";
       position: absolute;
@@ -15,8 +16,10 @@
       background-color: abstracts.$silver;
       top: 50%;
     }
+
     margin-bottom: 1rem;
   }
+
   &-search__form {
     padding: 3rem;
     height: fit-content;
@@ -33,25 +36,31 @@
       color: abstracts.$black;
     }
   }
+
   &__container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    gap: 3rem;
   }
+
   &-item ul {
     position: relative;
+
     div.rating {
       display: flex;
       width: 100%;
       gap: 0.5rem;
       justify-content: center;
+
       img {
         width: 2.5rem;
       }
     }
+
     li {
       list-style: none;
       display: none;
+
       &.highlighted {
         display: block;
         position: absolute;
@@ -64,9 +73,11 @@
         font-size: map-get(abstracts.$font-sizes, "medium");
       }
     }
+
     a {
       text-decoration: none;
     }
+
     .book-item {
       &__title {
         font-size: map-get(abstracts.$font-sizes, "lg");
@@ -74,13 +85,16 @@
         text-align: center;
         padding-inline: 1rem;
       }
+
       &__author {
         font-size: map-get(abstracts.$font-sizes, "medium");
         text-align: center;
       }
+
       &__image {
         margin-bottom: 2rem;
         aspect-ratio: 3/5;
+        width: 27.7rem;
       }
     }
   }
