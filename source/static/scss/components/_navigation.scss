@@ -12,7 +12,8 @@
 
   background-color: abstracts.$satin-linen;
 
-  padding: map-get(abstracts.$spacings, "md") map-get(abstracts.$spacings, "md") map-get(abstracts.$spacings, "xmassive");
+  padding: map-get(abstracts.$spacings, "md") map-get(abstracts.$spacings, "md")
+    map-get(abstracts.$spacings, "xmassive");
 
   &__main {
     display: flex;
@@ -51,4 +52,12 @@
   &__logo {
     max-width: abstracts.$logo-width;
   }
+
+  @include abstracts.respond("m-desktop") {
+    width: var(--nav-width);
+  }
+}
+
+:root {
+  --nav-width: 14.5rem;
 }

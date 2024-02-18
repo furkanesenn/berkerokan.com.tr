@@ -87,4 +87,12 @@
       top: 50%;
     }
   }
+
+  @include abstracts.respond("xs-desktop") {
+    padding: 1rem;
+  }
+  @include abstracts.respond("l-tablet") {
+    gap: 2rem;
+    grid-template-columns: 1fr 2.5fr;
+  }
 }

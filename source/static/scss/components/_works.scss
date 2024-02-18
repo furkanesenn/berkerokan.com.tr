@@ -5,6 +5,12 @@
   grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
   gap: 3.5rem;
   margin-top: 3rem;
+  @include abstracts.respond("xs-desktop") {
+    gap: 2rem;
+    .work.book-quote {
+      margin: 0;
+    }
+  }
 }
 
 .work {
@@ -34,7 +40,6 @@
   }
 
   &.last-book {
-
     .work__heading,
     .work__alt-text {
       text-align: center;
@@ -57,6 +62,12 @@
 
     .last-book-genre {
       margin-bottom: 2rem;
+    }
+    @include abstracts.respond("l-tablet") {
+      .last-book-image {
+        margin-bottom: 1rem;
+        margin-inline: 1rem;
+      }
     }
   }
 

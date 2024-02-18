@@ -65,6 +65,24 @@ p {
   margin: 0 auto;
   grid-column: 2/-1;
 }
+@media (max-width: 100em) {
+  .grid-main {
+    margin-right: 7.5vw;
+    width: 108rem;
+  }
+}
+@media (max-width: 87.5em) {
+  .grid-main {
+    margin-right: 2vw;
+    width: calc(95% - var(--nav-width));
+  }
+}
+@media (max-width: 76em) {
+  .grid-main {
+    margin-right: 1rem;
+    width: calc(97% - var(--nav-width));
+  }
+}
 
 .nav {
   position: fixed;
@@ -107,6 +125,15 @@ p {
 }
 .nav__logo {
   max-width: 11rem;
+}
+@media (max-width: 87.5em) {
+  .nav {
+    width: var(--nav-width);
+  }
+}
+
+:root {
+  --nav-width: 14.5rem;
 }
 
 .about-me {
@@ -186,12 +213,31 @@ p {
   right: 9rem;
   top: 50%;
 }
+@media (max-width: 76em) {
+  .about-me {
+    padding: 1rem;
+  }
+}
+@media (max-width: 70.8333333333em) {
+  .about-me {
+    gap: 2rem;
+    grid-template-columns: 1fr 2.5fr;
+  }
+}
 
 .works {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
   gap: 3.5rem;
   margin-top: 3rem;
+}
+@media (max-width: 76em) {
+  .works {
+    gap: 2rem;
+  }
+  .works .work.book-quote {
+    margin: 0;
+  }
 }
 
 .work__heading {
@@ -233,6 +279,12 @@ p {
 }
 .work.last-book .last-book-genre {
   margin-bottom: 2rem;
+}
+@media (max-width: 70.8333333333em) {
+  .work.last-book .last-book-image {
+    margin-bottom: 1rem;
+    margin-inline: 1rem;
+  }
 }
 .work.book-quote .work__alt-text::before, .work.last-book .work__alt-text::before {
   display: none;
@@ -523,6 +575,11 @@ p {
 .social-media__embeds .spotify-embed {
   width: 100%;
   grid-column: 1/span 2;
+}
+@media (max-width: 76em) {
+  .social-media {
+    margin-top: 0;
+  }
 }
 
 .book-detail {

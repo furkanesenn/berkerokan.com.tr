@@ -74,4 +74,8 @@
       grid-column: 1 / span 2;
     }
   }
+
+  @include abstracts.respond("xs-desktop") {
+    margin-top: 0;
+  }
 }
