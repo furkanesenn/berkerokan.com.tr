@@ -13,15 +13,6 @@
   grid-column: 2 / -1;
 
   @include abstracts.respond("l-desktop") {
-    margin-right: 7.5vw;
     width: 108rem;
-  }
-  @include abstracts.respond("m-desktop") {
-    margin-right: 2vw;
-    width: calc(95% - var(--nav-width));
-  }
-  @include abstracts.respond("xs-desktop") {
-    margin-right: 1rem;
-    width: calc(97% - var(--nav-width));
   }
 }

@@ -4,7 +4,7 @@
 <section class="about-me">
   <picture class="about-me__picture">
     <img class="about-me__image" src="{% static 'images/about-me-image.png' %}" />
-    <p class="about-me__image-alt">Fotoğraf: Berker Okan</p>
+    <!-- <p class="about-me__image-alt">Fotoğraf: Berker Okan</p> -->
   </picture>
   <div class="about-me__content">
     <p class="about-me__content-intro">Hoş geldiniz!</p>
@@ -68,7 +68,7 @@
           <span>Yazılarım</span>
         </h2>
         <p class="work__alt-text">
-          Kütüphanemdeki kitabı bulunan tüm yazıları <a href="{% url 'articles:articles-list' %}">bu sayfada</a>
+          Öykü, deneme vb. türlerde olan tüm yazılarımı <a href="{% url 'articles:articles-list' %}">bu sayfadan</a>
           inceleyebilirsiniz.
         </p>
       </div>
@@ -78,9 +78,8 @@
           <span>Özel Bültenim</span>
         </h2>
         <p class="work__alt-text">
-          Kütüphanemdeki kitapları ülkelere göre görebilir, merak ettiğiniz <a href="{% url 'newsletter'
-            %}">coğrafyaların
-            edebiyatına</a> detaylı bakabilirsiniz.
+          Benimle (ve yaptığım eserlerle/işlerle) alakalı aylık olarak içerik bültenleri almak için  <a href="{% url 'newsletter'
+            %}">bu sayfayı</a> inceleyebilirsiniz.
         </p>
       </div>
     </li>

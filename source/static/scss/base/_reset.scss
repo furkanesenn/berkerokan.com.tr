@@ -10,6 +10,7 @@
 a {
   // text-decoration: none;
   color: inherit;
+
   &:hover {
     font-style: italic;
   }
@@ -19,6 +20,14 @@ html {
   color-scheme: dark light;
   font-size: 62.5%; // 1rem = 10px
   hanging-punctuation: first last; // Aligns the text with the layout when there are quotes as first or last character
+
+  @include abstracts.respond("l-desktop") {
+    font-size: 56.25%; // 1rem = 9px
+  }
+
+  @include abstracts.respond("s-desktop") {
+    font-size: 50%; // 1rem = 8px
+  }
 }
 
 body {

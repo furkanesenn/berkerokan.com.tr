@@ -17,13 +17,23 @@ html {
   font-size: 62.5%;
   hanging-punctuation: first last;
 }
+@media (max-width: 100em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+@media (max-width: 79.1666666667em) {
+  html {
+    font-size: 50%;
+  }
+}
 
 body {
   min-height: 100dvh;
   font-size: 1.6rem;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
-  background-color: #fff;
+  background-color: #fafafa;
   color: #111;
 }
 
@@ -67,20 +77,7 @@ p {
 }
 @media (max-width: 100em) {
   .grid-main {
-    margin-right: 7.5vw;
     width: 108rem;
-  }
-}
-@media (max-width: 87.5em) {
-  .grid-main {
-    margin-right: 2vw;
-    width: calc(95% - var(--nav-width));
-  }
-}
-@media (max-width: 76em) {
-  .grid-main {
-    margin-right: 1rem;
-    width: calc(97% - var(--nav-width));
   }
 }
 
@@ -125,11 +122,6 @@ p {
 }
 .nav__logo {
   max-width: 11rem;
-}
-@media (max-width: 87.5em) {
-  .nav {
-    width: var(--nav-width);
-  }
 }
 
 :root {
@@ -212,17 +204,6 @@ p {
   background-color: #ccc;
   right: 9rem;
   top: 50%;
-}
-@media (max-width: 76em) {
-  .about-me {
-    padding: 1rem;
-  }
-}
-@media (max-width: 70.8333333333em) {
-  .about-me {
-    gap: 2rem;
-    grid-template-columns: 1fr 2.5fr;
-  }
 }
 
 .works {
@@ -576,11 +557,6 @@ p {
   width: 100%;
   grid-column: 1/span 2;
 }
-@media (max-width: 76em) {
-  .social-media {
-    margin-top: 0;
-  }
-}
 
 .book-detail {
   display: flex;
@@ -621,7 +597,7 @@ p {
   padding-block: 1rem;
   padding-inline: 2rem;
   background-color: #111;
-  color: #fff;
+  color: #fafafa;
   display: inline-flex;
   align-items: center;
   gap: 1rem;
@@ -639,7 +615,8 @@ p {
 }
 .book-detail__right-description {
   margin-top: 3rem;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
+  font-weight: 300;
   line-height: 2rem;
   letter-spacing: 0.5px;
 }
@@ -716,7 +693,7 @@ p {
   cursor: pointer;
   border: none;
   background-color: #111;
-  color: #fff;
+  color: #fafafa;
   border-radius: 5px;
   transition: all 0.3s ease;
 }
@@ -812,7 +789,7 @@ p {
   padding-block: 1rem;
   padding-inline: 2rem;
   background-color: #111;
-  color: #fff;
+  color: #fafafa;
   border-radius: 1rem;
 }
 .article-detail__left-like img {
