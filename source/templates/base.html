@@ -12,7 +12,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
   {% block base__head %} {% endblock %}
 </head>
 
@@ -20,7 +19,9 @@
   <nav class="nav">
     <a href="{% url "home" %}"><img class="nav__logo" src="{% static 'images/logo.webp' %}" alt="Berker Okan Logo" /></a>
 
-    <main class="nav__main">
+    <main id="_nav" class="nav__main">
+      <img id="_hamburger--open" class="nav__menu nav__menu--open" src="{% static "icons/hamburger.svg" %}" alt="Menu Button SVG" />
+      <img id="_hamburger--close" class="nav__menu nav__menu--close" src="{% static "icons/close.svg" %}" alt="Close Menu Button SVG" />
       <ul class="nav__links">
         <li class="nav__item"><a href="{% url "home" %}" class="nav__link">Hakkımda</a></li>
         <li class="nav__item">
@@ -30,6 +31,7 @@
         <li class="nav__item"><a href="{% url "gallery:gallery-albums" %}" class="nav__link">Galeri</a></li>
         <li class="nav__item"><a href="{% url "newsletter" %}" class="nav__link">Bültenim</a></li>
       </ul>
+      <script src="{% static "js/hamburger.js" %}"></script>
 
       <!-- <footer class="nav__footer">
           <ul class="nav__socials">

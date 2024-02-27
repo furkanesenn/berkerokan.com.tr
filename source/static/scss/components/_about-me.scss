@@ -87,4 +87,34 @@
       top: 50%;
     }
   }
+
+  @include abstracts.respond("s-tablet") {
+    grid-template-columns: auto 1fr;
+    gap: 3rem;
+    .about-me__image {
+      width: 26rem;
+    }
+  }
+  @include abstracts.respond("s-tablet") {
+    gap: 2rem;
+    .about-me__image {
+      width: 25rem;
+    }
+  }
+  @include abstracts.respond("xl-phone") {
+    display: flex;
+    flex-direction: column;
+    .about-me__content {
+      width: 100%;
+    }
+    .about-me__picture {
+      grid-column: 1/1;
+      .about-me__image {
+        width: 32.2rem;
+      }
+    }
+    .about-me__content-text {
+      font-size: 1.3em;
+    }
+  }
 }

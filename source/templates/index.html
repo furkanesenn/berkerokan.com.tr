@@ -21,8 +21,9 @@
       <br />
       Bu web sitesini, hayatım boyunca yaptığım bütün çalışmalarımı bir arada
       tutmak için ve hem kendime hem de okura bir andaç olması adına
-      hazırlıyorum. Ayrıca siteye üye olanlara her ay yayımlanacak <a href="{% url 'newsletter' %}"><span class="">özel
-          bültenimle</span></a> takipçilerimle güçlü bir bağ kurmayı hedefliyorum.
+      hazırlıyorum. Ayrıca siteye üye olanlara her ay yayımlanacak 
+      <a href="{% url 'newsletter' %}"><span>özel bültenimle</span></a>
+      takipçilerimle güçlü bir bağ kurmayı hedefliyorum.
       <br />
       <br />
       <a href="{% url 'articles:articles-list' %}">Yazılarım</a> kısmından yazdığım hikayeler, öyküler vb. arasında
@@ -78,8 +79,9 @@
           <span>Özel Bültenim</span>
         </h2>
         <p class="work__alt-text">
-          Benimle (ve yaptığım eserlerle/işlerle) alakalı aylık olarak içerik bültenleri almak için  <a href="{% url 'newsletter'
-            %}">bu sayfayı</a> inceleyebilirsiniz.
+          Benimle (ve yaptığım eserlerle/işlerle) alakalı aylık olarak içerik bültenleri almak için 
+          <a href="{% url 'newsletter' %}">bu sayfayı</a>
+          inceleyebilirsiniz.
         </p>
       </div>
     </li>
@@ -112,7 +114,7 @@
       </div>
     </li>
     <li class="social-media__item">
-      <a class="social-media__item-svg-link" href="https://open.spotify.com/show/6dliHl4sLaj2qO6qTQQ1AL">
+      <a class="social-media__item-svg-link" href="https://twitter.com/BerkerOkan">
         <img class="social-media__item-image" src="{% static 'icons/x.svg' %}" alt="X logo" />
       </a>
       <div class="social-media__item-right">
@@ -123,7 +125,7 @@
       </div>
     </li>
     <li class="social-media__item">
-      <a class="social-media__item-svg-link" href="https://open.spotify.com/show/6dliHl4sLaj2qO6qTQQ1AL">
+      <a class="social-media__item-svg-link" href="https://1000kitap.com/yazar/berker-okan">
         <img class="social-media__item-image" src="{% static 'icons/book.svg' %}" alt="1000kitap.com logo" />
       </a>
       <div class="social-media__item-right">
@@ -134,7 +136,7 @@
       </div>
     </li>
     <li class="social-media__item">
-      <a class="social-media__item-svg-link" href="https://open.spotify.com/show/6dliHl4sLaj2qO6qTQQ1AL">
+      <a class="social-media__item-svg-link" href="https://www.instagram.com/berkerokan/">
         <img class="social-media__item-image" src="{% static 'icons/instagram.svg' %}" alt="Instagram logo" />
       </a>
       <div class="social-media__item-right">
@@ -145,6 +147,7 @@
       </div>
     </li>
   </ul>
+  {% comment "" %}
   <div class="social-media__embeds">
     <a class="twitter-timeline" data-lang="tr" href="https://twitter.com/BerkerOkan?ref_src=twsrc%5Etfw">Tweets by
       BerkerOkan</a>
@@ -315,5 +318,6 @@
       frameBorder="0" allowfullscreen=""
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </div>
+  {% endcomment %}
 </section>
 {% endblock %}

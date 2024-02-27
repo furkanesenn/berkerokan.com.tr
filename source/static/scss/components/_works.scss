@@ -11,6 +11,122 @@
       margin: 0;
     }
   }
+  @include abstracts.respond("m-tablet") {
+    gap: 1.5rem;
+    grid-template-columns: repeat(10, 1fr);
+    .work.last-book .last-book-image {
+      margin-inline: 2rem;
+    }
+    .work.work__links.quick-links {
+      margin-inline: 2rem;
+      grid-column: 1 / 11;
+      grid-row: 1;
+      margin-bottom: 1rem;
+      .quick-link__item {
+        flex-direction: row;
+        .work__alt-text::before {
+          display: none;
+        }
+        .work__links-item {
+          position: relative;
+          .work__heading {
+            width: fit-content;
+          }
+          .work__alt-text {
+            width: fit-content;
+            text-wrap: balance;
+            margin-bottom: 2rem;
+          }
+          &::before {
+            position: absolute;
+            content: "";
+            right: 2rem;
+            top: -5%;
+            width: 0.9px;
+            height: 90%;
+            background-color: abstracts.$silver;
+          }
+          &:last-child {
+            &::before {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+    .work.last-book {
+      grid-column: span 3;
+      // grid-column: 1 / span 2;
+    }
+    .work.book-quote {
+      grid-column: span 7;
+      // grid-column: 3 / span 2;
+    }
+  }
+  @include abstracts.respond("xxs-tablet") {
+    .work.work__links.quick-links .quick-link__item {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      .work__links-item::before {
+        right: -0.3rem;
+      }
+    }
+  }
+  @include abstracts.respond("l-phone") {
+    .work.last-book {
+      grid-column: span 4;
+      // grid-column: 1 / span 2;
+    }
+    .work.book-quote {
+      grid-column: span 6;
+      margin-right: 3rem;
+      // grid-column: 3 / span 2;
+    }
+  }
+  @include abstracts.respond("m-phone") {
+    .work {
+      &.last-book {
+        grid-row: auto;
+        grid-column: span 5;
+      }
+      &.work__links.quick-links {
+        grid-row: auto;
+        grid-column: span 5;
+        .quick-link__item {
+          display: grid;
+          grid-template-columns: 1fr;
+          .work__links-item::before {
+            width: 90%;
+            left: 0%;
+            top: 100%;
+            height: 0.8px;
+          }
+        }
+      }
+      &.book-quote {
+        grid-row: 1;
+        grid-column: span 10;
+        margin-inline: 1rem;
+      }
+    }
+  }
+  @include abstracts.respond("sm-phone") {
+    grid-template-columns: repeat(20, 1fr);
+    .work {
+      &.last-book {
+        grid-row: auto;
+        grid-column: span 19;
+      }
+      &.work__links.quick-links {
+        grid-row: auto;
+        grid-column: span 19;
+      }
+      &.book-quote {
+        grid-row: auto;
+        grid-column: span 19;
+      }
+    }
+  }
 }
 
 .work {
@@ -65,7 +181,7 @@
     }
     @include abstracts.respond("l-tablet") {
       .last-book-image {
-        margin-bottom: 1rem;
+        margin-bottom: 0;
         margin-inline: 1rem;
       }
     }

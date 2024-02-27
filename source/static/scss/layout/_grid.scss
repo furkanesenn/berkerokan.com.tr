@@ -15,4 +15,32 @@
   @include abstracts.respond("l-desktop") {
     width: 108rem;
   }
+  @include abstracts.respond("m-desktop") {
+    margin-right: clamp(2rem, 12vw, 20rem);
+  }
+  @include abstracts.respond("m-desktop") {
+    margin-right: clamp(3rem, 6.5vw, 10rem);
+  }
+  @include abstracts.respond("m-tablet") {
+    width: 104rem;
+  }
+  @include abstracts.respond("s-tablet") {
+    width: 100rem;
+    margin: 0;
+    margin-left: clamp(15rem, 13vw, 20rem);
+  }
+  @include abstracts.respond("xs-tablet") {
+    margin-inline: 0;
+    place-self: center;
+    margin-top: 15rem;
+  }
+  @include abstracts.respond("xxs-tablet") {
+    width: 100%;
+  }
+  @include abstracts.respond("xl-phone") {
+    width: clamp(90%, 85rem, 99%);
+    p {
+      font-size: 1.4em;
+    }
+  }
 }

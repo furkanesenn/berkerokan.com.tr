@@ -1,11 +1,34 @@
 $breakpoints: (
-  "l-desktop": 100em, // 1600px
-  "m-desktop": 87.5em, // 1400px
-  "s-desktop": 79.16666666666667em, // 1270px
-  "xs-desktop": 76em, // 1216px
-  "l-tablet": 70.83333333333333em, // 1133px
-  "m-tablet": 66.66666666666667em, // 1066px
+  "l-desktop": 100em,
+  // 1600px
+  "m-desktop": 87.5em,
+  // 1400px
+  "s-desktop": 79.16666666666667em,
+  // 1270px
+  "xs-desktop": 76em,
+  // 1216px
+  "l-tablet": 70.83333333333333em,
+  // 1133px
+  "m-tablet": 66.66666666666667em,
+  // 792 / 800 px
+  "s-tablet": 64em,
+  // 768px
+  "xs-tablet": 60em,
+  // 720px
+  "xxs-tablet": 53.3336em,
+  // 640px
+  "xl-phone": 50em,
+  // 600px
+  "l-phone": 41.6664em,
+  // 500px
+  "m-phone": 36.6664em,
+  // 440px
+  "sm-phone": 33.3336em,
+  // 400px
+  "s-phone": 26.6668em,
+  // 320/12
+  
   // desktop
   // tablet
-  // mobile
+  // mobile,,
 );

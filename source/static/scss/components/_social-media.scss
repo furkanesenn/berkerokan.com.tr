@@ -74,4 +74,47 @@
       grid-column: 1 / span 2;
     }
   }
+  @include abstracts.respond("xxs-tablet") {
+    width: 95%;
+    margin-inline: 2rem;
+    .social-media__list {
+      gap: clamp(1rem, 6vw, 6rem);
+      justify-content: center;
+    }
+    .social-media__embeds {
+      gap: 3rem;
+      display: flex;
+      flex-direction: column;
+      .twitter-timeline,
+      .instagram-media {
+        height: 110rem;
+      }
+    }
+  }
+  @include abstracts.respond("xl-phone") {
+    width: 92%;
+    .social-media__list {
+      // gap: clamp(1rem, 3vw, 6rem);
+      justify-content: space-evenly;
+      .social-media__item-svg-link {
+        padding: 0.7rem;
+        .social-media__item-image {
+          width: 4rem;
+        }
+      }
+    }
+    .social-media__item-right {
+      display: none;
+    }
+  }
+  @include abstracts.respond("l-phone") {
+    .social-media__list {
+      .social-media__item-svg-link {
+        padding: 0.8rem;
+        .social-media__item-image {
+          width: 4rem;
+        }
+      }
+    }
+  }
 }
