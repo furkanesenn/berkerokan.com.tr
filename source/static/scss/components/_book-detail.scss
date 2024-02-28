@@ -84,7 +84,6 @@
   }
 
   &__add-rating {
-
     &-input,
     &-select,
     &-option {
@@ -98,6 +97,37 @@
       &.scale {
         min-width: 25rem;
       }
+    }
+  }
+
+  @include abstracts.respond("xl-phone") {
+    margin-inline: 1rem;
+    &__add-rating {
+      margin-inline: 1rem;
+    }
+    &__left-image {
+      height: 55rem;
+    }
+    &__right-horizontal {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      p {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+  @include abstracts.respond("m-phone") {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    &__right-horizontal {
+      align-items: center;
+    }
+    &__add-rating {
+      display: grid;
+      place-content: center;
+      gap: 1rem;
     }
   }
 }

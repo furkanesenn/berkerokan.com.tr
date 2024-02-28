@@ -70,4 +70,8 @@
       grid-column: span 3;
     }
   }
+
+  @include abstracts.respond("xl-phone") {
+    margin-inline: 1rem;
+  }
 }
