@@ -69,4 +69,61 @@
       font-style: italic;
     }
   }
+
+  @include abstracts.respond("xs-tablet") {
+    &-search__form {
+      margin-bottom: 2rem;
+    }
+    &__container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    &__item {
+      &-title {
+        font-size: 2.2rem;
+        font-weight: map-get(abstracts.$font-weights, "medium");
+      }
+      &-description {
+        font-size: 1.8rem;
+      }
+      &-author {
+        font-size: 2rem;
+      }
+    }
+    .grid-main &-detail {
+      gap: 2rem;
+    }
+    &-detail__right-date {
+      font-size: 1.9rem;
+    }
+    &-detail__right &-detail__right-description {
+      font-size: 1.9rem;
+    }
+  }
+  @include abstracts.respond("l-phone") {
+    &-detail {
+      &__right &__right-heading {
+        font-size: 2.8rem;
+      }
+      margin-inline: 1rem;
+      & &__left-image {
+        min-width: 30rem;
+      }
+    }
+  }
+  @include abstracts.respond("m-phone") {
+    &-detail {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      &__right {
+        &-description {
+          margin-inline: 1rem;
+        }
+        &-horizontal {
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
 }
