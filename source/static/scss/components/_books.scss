@@ -98,4 +98,46 @@
       }
     }
   }
+  @include abstracts.respond("xs-tablet") {
+    &-search__form  {
+      margin-bottom: 4rem;
+    }
+  }
+  @include abstracts.respond("xl-phone") {
+    &-search__form,
+    &__heading,
+    &__container {
+      margin-inline: 2rem;
+    }
+    &-search__form {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1vw;
+      input[name="search-query"] {
+        grid-column: 1 / span 2;
+      }
+    }
+    &__container {
+      margin-top: 4rem;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @include abstracts.respond("sm-phone") {
+    .book-item ul li.highlighted {
+      font-size: 2rem;
+    }
+    &-search__form,
+    &__heading,
+    &__container {
+      margin-inline: 1.5rem;
+    }
+    &-search__form {
+      padding: 1.5rem;
+    }
+    &__container {
+      margin-top: 4rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 }
