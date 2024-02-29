@@ -3,7 +3,7 @@
 {% block main %}
 <section class="gallery-detail">
     <h1 class="gallery-detail__heading">{{ album.title }}</h1>
-    <p class="gallery-detail__count">Album Impression: {{ album.impression_count }}</p>
+    <p class="gallery-detail__count">Album Impression: {{ album.view_count }}</p>
     <p class="gallery-detail__description">{{ album.description }}</p>
     <div class="gallery-detail__main">
       {% for photo in album.photos.all %}

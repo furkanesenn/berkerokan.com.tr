@@ -22,7 +22,6 @@ html:has(.big-image-container img.active) {
 }
 
 .gallery-detail {
-
   &__heading {
     font-size: map-get(abstracts.$font-sizes, "xxl");
     font-family: "Libre Caslon Text", serif;
@@ -45,12 +44,14 @@ html:has(.big-image-container img.active) {
 
   &__count {
     text-align: start;
+    margin-bottom: 1rem;
   }
 
   &__description {
     font-size: map-get(abstracts.$font-sizes, "regular-medium");
     letter-spacing: 0.5px;
     line-height: 2rem;
+    line-height: normal;
   }
 
   &__main {
@@ -72,8 +73,46 @@ html:has(.big-image-container img.active) {
         height: 100%;
         object-fit: cover;
       }
-
-      &__count {}
+    }
+  }
+  @include abstracts.respond("m-tablet") {
+    margin-inline: 2rem;
+  }
+  @include abstracts.respond("xxs-tablet") {
+    margin-inline: 2rem;
+    margin-bottom: 4rem;
+    &__main {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+      &-item {
+        margin-bottom: 3rem;
+      }
+    }
+  }
+  @include abstracts.respond("xl-phone") {
+    &__main {
+    }
+  }
+  @include abstracts.respond("l-phone") {
+    &__main {
+      gap: 1.5rem;
+    }
+    &__heading {
+      font-size: 2.8rem;
+      width: 90%;
+      text-align: center;
+      &::before {
+        display: none;
+      }
+    }
+    &__count,
+    &__description {
+      text-align: center;
+    }
+  }
+  @include abstracts.respond("m-phone") {
+    &__main {
+      gap: 1rem;
     }
   }
 }

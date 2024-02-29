@@ -44,4 +44,20 @@
       text-align: end;
     }
   }
+
+  @include abstracts.respond("xxs-tablet") {
+    margin-inline: 1rem;
+    &-detail {
+      margin-inline: 2rem;
+      &__main {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+  @include abstracts.respond("l-phone") {
+    &__container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
 }
