@@ -1,0 +1,19 @@
+@use "../abstracts";
+
+.copyright {
+  width: 100%;
+  font-size: clamp(1rem, 1vw, 3rem);
+  display: grid;
+  place-content: center;
+  margin-block: 2rem;
+  &__text {
+    text-align: center;
+    a {
+      font-weight: map-get(abstracts.$font-weights, "semi-bold");
+      text-decoration: none;
+      &:hover {
+        // font-style: normal;
+      }
+    }
+  }
+}

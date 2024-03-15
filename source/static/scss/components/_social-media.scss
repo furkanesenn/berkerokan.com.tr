@@ -4,6 +4,10 @@
   padding-block: 3rem;
   margin-top: 3rem;
 
+  &__text {
+    margin-block: 2.5rem;
+    font-size: map-get(abstracts.$font-sizes, "medium");
+  }
   &__heading {
     position: relative;
     font-size: map-get(abstracts.$font-sizes, "xl");

@@ -869,6 +869,10 @@ p {
   padding-block: 3rem;
   margin-top: 3rem;
 }
+.social-media__text {
+  margin-block: 2.5rem;
+  font-size: 2rem;
+}
 .social-media__heading {
   position: relative;
   font-size: 2.8rem;
@@ -1410,6 +1414,20 @@ html:has(.big-image-container img.active) {
   }
 }
 
+.copyright {
+  width: 100%;
+  font-size: clamp(1rem, 1vw, 3rem);
+  display: grid;
+  place-content: center;
+  margin-block: 2rem;
+}
+.copyright__text {
+  text-align: center;
+}
+.copyright__text a {
+  font-weight: 600;
+  text-decoration: none;
+}
 span.bold {
   font-weight: 700;
 }

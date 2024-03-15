@@ -23,7 +23,7 @@
       <img id="_hamburger--open" class="nav__menu nav__menu--open" src="{% static "icons/hamburger.svg" %}" alt="Menu Button SVG" />
       <img id="_hamburger--close" class="nav__menu nav__menu--close" src="{% static "icons/close.svg" %}" alt="Close Menu Button SVG" />
       <ul class="nav__links">
-        <li class="nav__item"><a href="{% url "home" %}" class="nav__link">Hakkımda</a></li>
+        <li class="nav__item"><a href="{% url "about" %}" class="nav__link">Hakkımda</a></li>
         <li class="nav__item">
           <a href="{% url "books:books-list" %}" class="nav__link">Kitaplarım</a>
         </li>
@@ -46,7 +46,12 @@
     </main>
   </nav>
 
-  <main class="main grid-main load_effect">{% block main %} {% endblock %}</main>
+  <main class="main grid-main load_effect">
+    {% block main %} {% endblock %}
+    <div class="copyright">
+      <p class="copyright__text">© 2024 berkerokan.com.tr | Tüm hakları saklıdır. | Web geliştirme: <a href="https://syntramedia.com/">Syntra Media</a> </p>
+    </div>
+  </main>
 
   {% block base__main-last %} {% endblock %}
 </body>
