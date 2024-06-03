@@ -11,13 +11,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-(3t6c7l-t183%vv!^)#m9el7wxncguknn*339f*qb2%=^u^vhe'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 from django.core.management.commands.runserver import Command as runserver
 runserver.default_port = "8080"
 
 
-ALLOWED_HOSTS = ['localhost', "127.0.0.1"]
+
+ALLOWED_HOSTS = ['localhost', "127.0.0.1", 'berkerokan.com.tr', '45.93.137.179']
 
 
 # Application definition
