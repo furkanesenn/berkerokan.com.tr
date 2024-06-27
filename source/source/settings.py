@@ -23,7 +23,7 @@ runserver.default_port = "8080"
 
 
 
-ALLOWED_HOSTS = ['localhost', "127.0.0.1", 'berkerokan.com.tr', '45.93.137.179']
+ALLOWED_HOSTS = ['localhost', "127.0.0.1", 'berkerokan.com.tr', '45.93.137.179', 'www.berkerokan.com.tr']
 
 
 # Application definition
