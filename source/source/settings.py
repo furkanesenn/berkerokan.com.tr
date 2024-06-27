@@ -22,7 +22,8 @@ from django.core.management.commands.runserver import Command as runserver
 runserver.default_port = "8080"
 
 
-ALLOWED_HOSTS = ['localhost', "127.0.0.1"]
+
+ALLOWED_HOSTS = ['localhost', "127.0.0.1", 'berkerokan.com.tr', '45.93.137.179']
 
 
 # Application definition
